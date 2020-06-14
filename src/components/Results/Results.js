@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
+import { useHistory } from 'react-router-dom';
 import './Results.css';
 
 export default function Results() {
 
+  const history = useHistory();
   const [searchResults, setSearchResults] = useState([]);
 
   useEffect(() => {
@@ -38,17 +40,19 @@ export default function Results() {
   ])
   }, []);
 
+  const selectDoctor = param => history.push(`/practitioner/${param}`);
+
   return(
     <div className="main-container">
       <h1>Practitioners in Your Area</h1>
       <div>
         {searchResults.map((item, i) => 
           <div key={i} id="results-grid">
-            <div>
+            <div onClick={() => selectDoctor(item.name)}>
               <img className="results-img" src="/images/doc.png" alt="img from database" />
             </div>
             <div>
-              <h2>{item.name}</h2>
+              <h2 onClick={() => selectDoctor(item.name)}>{item.name}</h2>
               <p><i>{item.employer}</i></p>
               <p>{item.rating}</p>
               <p>{item.bio}</p>
