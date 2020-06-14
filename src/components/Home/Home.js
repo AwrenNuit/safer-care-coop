@@ -2,7 +2,7 @@ import React from "react";
 
 export default function Home() {
   return (
-    <>
+    <div className="main-container">
       <h1>Reimagining Healthcare</h1>
       <p>
         People who hold oppressed or marginalized identities often experience
@@ -21,6 +21,6 @@ export default function Home() {
       <div>
         <button>SEARCH!</button>
       </div>
-    </>
+    </div>
   );
 }
