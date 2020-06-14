@@ -3,7 +3,7 @@ import "./Header.css";
 
 export default function Header() {
   return (
-    <div className="main-container">
+    <div id="header-container">
       <div id="header">
         <h2>[Safer Healthcare]</h2>
       </div>
@@ -11,7 +11,7 @@ export default function Header() {
       <input
         id="searchbar"
         type="text"
-        placeholder="search healthcare practitioners"
+        placeholder="enter zipcode or city"
       />
     </div>
   );

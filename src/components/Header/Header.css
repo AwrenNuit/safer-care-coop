@@ -1,3 +1,7 @@
+#header-container {
+  text-align: center;
+}
+
 #header {
   background-color: #6b99fd;
   height: 70px;
