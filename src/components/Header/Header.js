@@ -1,5 +1,6 @@
 import React from "react";
 import "./Header.css";
+import Searchbar from "../Searchbar/Searchbar";
 
 export default function Header() {
   return (
@@ -7,12 +8,7 @@ export default function Header() {
       <div id="header">
         <h2>[Safer Healthcare]</h2>
       </div>
-      {/* add icon to searchbar */}
-      <input
-        id="searchbar"
-        type="text"
-        placeholder="enter zipcode or city"
-      />
+      <Searchbar />
     </div>
   );
 }
