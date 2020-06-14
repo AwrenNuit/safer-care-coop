@@ -1,0 +1,11 @@
+#header {
+  background-color: #6b99fd;
+  height: 70px;
+  line-height: 70px;
+  width: 100%;
+}
+
+#searchbar {
+  margin-top: 2rem;
+  width: 90%;
+}
