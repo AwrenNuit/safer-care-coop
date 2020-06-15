@@ -7,5 +7,16 @@
 }
 
 .results-img {
+  cursor: pointer;
   height: 150px;
+}
+
+.results-name {
+  cursor: pointer;
+  text-decoration: underline transparent;
+  transition: 0.3s;
+}
+
+.results-name:hover {
+  text-decoration: underline;
 }

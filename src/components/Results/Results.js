@@ -55,7 +55,7 @@ export default function Results() {
               />
             </div>
             <div>
-              <h2 onClick={() => selectDoctor(item.name)}>{item.name}</h2>
+              <h2 className="results-name" onClick={() => selectDoctor(item.name)}>{item.name}</h2>
               <p>
                 <i>{item.employer}</i>
               </p>
