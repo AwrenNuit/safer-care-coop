@@ -4,6 +4,7 @@
 
 #header {
   background-color: #6b99fd;
+  cursor: pointer;
   height: 70px;
   line-height: 70px;
   width: 100%;
