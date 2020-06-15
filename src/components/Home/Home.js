@@ -1,4 +1,5 @@
 import React from "react";
+import './Home.css';
 
 export default function Home() {
   return (
@@ -13,13 +14,16 @@ export default function Home() {
         hold oppressed or marginalized identities to find a healthcare
         practitioner that will provide better care.
       </p>
+      <br />
       <p>
         Accounts are not required for basic use like viewing, rating, and
         reviewing doctors. However, an account is required to track Favorites.
       </p>
+      <br />
       <p>Search your area for safer healthcare now.</p>
-      <div>
-        <button>SEARCH!</button>
+      <br />
+      <div style={{textAlign:"center"}}>
+        <button id="home-btn">SEARCH!</button>
       </div>
     </div>
   );
