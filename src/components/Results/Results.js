@@ -64,6 +64,7 @@ export default function Results() {
               <p>
                 Tags:{" "}
                 {item.tags.map((tag, j) => (
+                  // turn into links, clicking returns results of clicked tag
                   <span key={j}>{tag} </span>
                 ))}
               </p>
