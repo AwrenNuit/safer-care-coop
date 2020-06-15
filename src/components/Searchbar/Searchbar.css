@@ -1,4 +1,18 @@
+#search-container {
+  border: 2px solid black;
+  border-radius: 10px;
+  margin: 2rem;
+  padding: 1rem;
+}
+
 #searchbar {
-  margin: 2rem 2rem 1rem 0;
-  width: 70%;
+  border-radius: 10px;
+  font-size: 1.3rem;
+  height: 45px;
+  width: 90%;
+}
+
+#search-btn {
+  display: block;
+  margin: 1rem auto;
 }

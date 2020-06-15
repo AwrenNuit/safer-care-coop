@@ -17,14 +17,15 @@ export default function Searchbar() {
   ]);
 
   return(
-    <div>   
+    <div id="search-container">   
       {/* add icon to searchbar */}
       <input
         id="searchbar"
         type="text"
         placeholder="enter zipcode or city"
       />
-      <button>SEARCH</button>
+      <button id="search-btn">SEARCH</button>
+      {/* set each checkbox to grid */}
       {checkboxes.map((item, i) => <Checkbox key={i} label={item.label} setting={item.setting} />)}
     </div>
   );
