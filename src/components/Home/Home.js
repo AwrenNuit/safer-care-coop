@@ -1,5 +1,5 @@
 import React from "react";
-import './Home.css';
+import "./Home.css";
 
 export default function Home() {
   return (
@@ -22,7 +22,7 @@ export default function Home() {
       <br />
       <p>Search your area for safer healthcare now.</p>
       <br />
-      <div style={{textAlign:"center"}}>
+      <div style={{ textAlign: "center" }}>
         <button id="home-btn">SEARCH!</button>
       </div>
     </div>
