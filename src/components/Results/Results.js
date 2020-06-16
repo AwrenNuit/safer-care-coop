@@ -2,6 +2,7 @@ import React, { useState, useEffect, useContext } from "react";
 import { useHistory } from "react-router-dom";
 import "./Results.css";
 import { SelectedPractitionerContext } from "../App/App";
+import StarRating from 'react-star-ratings';
 
 export default function Results() {
   const history = useHistory();
@@ -20,21 +21,21 @@ export default function Results() {
       {
         name: "Doctor 2",
         employer: "Employer",
-        rating: 6,
+        rating: 1,
         bio: `Here's a brief bio about this healthcare practitioner. They mostly do this type of work.`,
         tags: ["POC"],
       },
       {
         name: "Doctor 3",
         employer: "Employer",
-        rating: 10,
+        rating: 5,
         bio: `Here's a brief bio about this healthcare practitioner. They mostly do this type of work.`,
         tags: ["transgender", "women"],
       },
       {
         name: "Doctor 4",
         employer: "Employer",
-        rating: 1,
+        rating: 2,
         bio: `Here's a brief bio about this healthcare practitioner. They mostly do this type of work.`,
         tags: ["women"],
       },
@@ -73,7 +74,14 @@ export default function Results() {
               <p>
                 <i>{item.employer}</i>
               </p>
-              <p>{item.rating}</p>
+              <StarRating
+                name='rating'
+                numberOfStars={5}
+                rating={item.rating}
+                starDimension="20px"
+                starRatedColor="gold"
+                starSpacing="0"
+              />
               <p>{item.bio}</p>
               <p className="tags">
                 Tags:{" "}
