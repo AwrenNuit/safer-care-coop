@@ -69,7 +69,7 @@ export default function Results() {
               </p>
               <p>{item.rating}</p>
               <p>{item.bio}</p>
-              <p>
+              <p className="tags">
                 Tags:{" "}
                 {item.tags.map((tag, j) => (
                   // turn into links, clicking returns results of clicked tag
