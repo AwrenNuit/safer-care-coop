@@ -1,9 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { useHistory } from "react-router-dom";
 import "./Results.css";
+import { SelectedPractitionerContext } from "../App/App";
 
 export default function Results() {
   const history = useHistory();
+  const { state, dispatch } = useContext(SelectedPractitionerContext);
   const [searchResults, setSearchResults] = useState([]);
 
   useEffect(() => {
@@ -39,7 +41,13 @@ export default function Results() {
     ]);
   }, []);
 
-  const selectDoctor = (param) => history.push(`/practitioner/${param}`);
+  const selectDoctor = (doctor) => {
+    dispatch({
+      type: `SET_DOCTOR`,
+      payload: doctor,
+    });
+    history.push(`/practitioner/${doctor.name}`);
+  }
 
   return (
     <div className="main-container">
@@ -55,7 +63,7 @@ export default function Results() {
               />
             </div>
             <div>
-              <h2 className="results-name" onClick={() => selectDoctor(item.name)}>{item.name}</h2>
+              <h2 className="results-name" onClick={() => selectDoctor(item)}>{item.name}</h2>
               <p>
                 <i>{item.employer}</i>
               </p>
