@@ -60,7 +60,7 @@ export default function Results() {
       <div>
         {searchResults.map((item, i) => (
           <div key={i} id="results-grid">
-            <div onClick={() => selectDoctor(item.name)}>
+            <div onClick={() => selectDoctor(item)}>
               <img
                 className="results-img"
                 src="/images/doc.png"
