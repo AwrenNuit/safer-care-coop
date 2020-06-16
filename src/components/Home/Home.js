@@ -15,12 +15,7 @@ export default function Home() {
         practitioner that will provide better care.
       </p>
       <br />
-      <p>
-        Accounts are not required for basic use like viewing, rating, and
-        reviewing doctors. However, an account is required to track Favorites.
-      </p>
-      <br />
-      <p>Search your area for safer healthcare now.</p>
+      <p id="home-bold">Search your area for safer healthcare now</p>
     </div>
   );
 }
