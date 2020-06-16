@@ -20,3 +20,13 @@ button {
   bottom: 15px;
   position: absolute;
 }
+
+.this-tag {
+  color: #6b99fd;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.this-tag:hover {
+  color: #4f71bb;
+}

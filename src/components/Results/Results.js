@@ -41,13 +41,17 @@ export default function Results() {
     ]);
   }, []);
 
+  const searchTag = (tag) => {
+    // search based on selected tag
+  };
+
   const selectDoctor = (doctor) => {
     dispatch({
       type: `SET_DOCTOR`,
       payload: doctor,
     });
     history.push(`/practitioner/${doctor.name}`);
-  }
+  };
 
   return (
     <div className="main-container">
@@ -63,7 +67,9 @@ export default function Results() {
               />
             </div>
             <div>
-              <h2 className="results-name" onClick={() => selectDoctor(item)}>{item.name}</h2>
+              <h2 className="results-name" onClick={() => selectDoctor(item)}>
+                {item.name}
+              </h2>
               <p>
                 <i>{item.employer}</i>
               </p>
@@ -73,7 +79,9 @@ export default function Results() {
                 Tags:{" "}
                 {item.tags.map((tag, j) => (
                   // turn into links, clicking returns results of clicked tag
-                  <span key={j}>{tag} </span>
+                  <span className="this-tag" key={j} onClick={() => searchTag(tag)}>
+                    {(j ? ", " : "") + tag}
+                  </span>
                 ))}
               </p>
             </div>
