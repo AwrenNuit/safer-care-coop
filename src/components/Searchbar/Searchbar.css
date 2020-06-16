@@ -13,6 +13,14 @@
   width: 90%;
 }
 
+#filter-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  margin: 0 auto;
+  text-align: left;
+  width: 90%;
+}
+
 #search-btn {
   display: block;
   margin: 1rem auto;
