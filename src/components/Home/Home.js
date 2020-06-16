@@ -21,10 +21,6 @@ export default function Home() {
       </p>
       <br />
       <p>Search your area for safer healthcare now.</p>
-      <br />
-      <div style={{ textAlign: "center" }}>
-        <button id="home-btn">SEARCH!</button>
-      </div>
     </div>
   );
 }
