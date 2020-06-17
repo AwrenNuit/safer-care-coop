@@ -12,11 +12,17 @@ export default function NewReview() {
   const handleSubmit = (e) => {
     e.preventDefault();
     // dispatch data to database
-  }
+  };
 
   return (
     <form onSubmit={handleSubmit}>
-      <div style={{ border: "3px solid black", padding: "1rem" }}>
+      <div
+        style={{
+          border: "3px solid black",
+          marginTop: "2rem",
+          padding: "1rem",
+        }}
+      >
         <div style={{ float: "right" }}>
           <StarRating
             changeRating={(rating) => setStarRating(rating)}

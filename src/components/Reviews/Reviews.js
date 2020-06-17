@@ -1,12 +1,18 @@
 import React, { useState } from "react";
-import StarRating from 'react-star-ratings';
+import StarRating from "react-star-ratings";
 
 export default function Reviews() {
   const [starRating, setStarRating] = useState(3);
-  
+
   return (
     // this data will be mapped through
-    <div style={{border:"3px solid black", padding: "1rem"}}>
+    <div
+      style={{
+        border: "3px solid black",
+        marginTop: "1.5rem",
+        padding: "1rem",
+      }}
+    >
       <div style={{ float: "right" }}>
         <StarRating
           changeRating={(rating) => setStarRating(rating)}
