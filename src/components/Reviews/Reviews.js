@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import StarRating from "react-star-ratings";
 
 export default function Reviews() {
