@@ -3,6 +3,7 @@ import './SelectedPractitioner.css';
 import { SelectedPractitionerContext } from "../App/App";
 import StarRating from 'react-star-ratings';
 import Reviews from "../Reviews/Reviews";
+import NewReview from "../NewReview/NewReview";
 
 export default function SelectedPractitioner() {
   const { state, dispatch } = useContext(SelectedPractitionerContext);
@@ -26,6 +27,7 @@ export default function SelectedPractitioner() {
           <p>Tags: {state.tags.map((tag, i) => <span key={i}>{tag}</span>)}</p>
         </div>
       </div>
+      <NewReview />
       <Reviews />
     </div>
   );
