@@ -2,8 +2,6 @@ import React, { useState } from "react";
 import StarRating from "react-star-ratings";
 
 export default function Reviews() {
-  const [starRating, setStarRating] = useState(3);
-
   return (
     // this data will be mapped through
     <div
@@ -15,13 +13,10 @@ export default function Reviews() {
     >
       <div style={{ float: "right" }}>
         <StarRating
-          changeRating={(rating) => setStarRating(rating)}
-          isSelectable={true}
           name="rating"
           numberOfStars={5}
-          rating={starRating}
+          rating={3} // use actual review rating
           starDimension="30px"
-          starHoverColor="gold"
           starRatedColor="gold"
           starSpacing="0"
         />
