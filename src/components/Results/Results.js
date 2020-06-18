@@ -1,12 +1,12 @@
 import React, { useState, useEffect, useContext } from "react";
 import { useHistory } from "react-router-dom";
 import "./Results.css";
-import { SelectedPractitionerContext } from "../App/App";
+import { Context } from "../App/App";
 import StarRating from 'react-star-ratings';
 
 export default function Results() {
   const history = useHistory();
-  const { state, dispatch } = useContext(SelectedPractitionerContext);
+  const { state, dispatch } = useContext(Context);
   const [searchResults, setSearchResults] = useState([]);
 
   useEffect(() => {

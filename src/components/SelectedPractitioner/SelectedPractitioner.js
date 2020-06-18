@@ -1,12 +1,12 @@
 import React, { useContext } from "react";
 import './SelectedPractitioner.css';
-import { SelectedPractitionerContext } from "../App/App";
+import { Context } from "../App/App";
 import StarRating from 'react-star-ratings';
 import Reviews from "../Reviews/Reviews";
 import NewReview from "../NewReview/NewReview";
 
 export default function SelectedPractitioner() {
-  const { state, dispatch } = useContext(SelectedPractitionerContext);
+  const { state, dispatch } = useContext(Context);
 
   return (
     <div className="main-container">
