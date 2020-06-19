@@ -7,24 +7,25 @@ import NewReview from "../NewReview/NewReview";
 
 export default function SelectedPractitioner() {
   const { state, dispatch } = useContext(Context);
+  const practitioner = state.selectedPractitioner;
 
   return (
     <div className="main-container">
-      <h1>{state.name}</h1>
+      <h1>{practitioner.name}</h1>
       <div id="selected-grid">
-        <img id="selected-img" src={state.image} alt="" />
+        <img id="selected-img" src={practitioner.image} alt="" />
         <div>
-          <p>{state.employer}</p>
+          <p>{practitioner.employer}</p>
           <StarRating
             name='rating'
             numberOfStars={5}
-            rating={state.rating}
+            rating={practitioner.rating}
             starDimension="20px"
             starRatedColor="gold"
             starSpacing="0"
           />
-          <p>{state.bio}</p>
-          <p>Tags: {state.tags.map((tag, i) => <span key={i}>{tag}</span>)}</p>
+          <p>{practitioner.bio}</p>
+          <p>Tags: {practitioner.tags.map((tag, i) => <span key={i}>{tag}</span>)}</p>
         </div>
       </div>
       <NewReview />

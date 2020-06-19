@@ -57,7 +57,7 @@ export default function Results() {
             <div onClick={() => selectDoctor(item)}>
               <img
                 className="results-img"
-                src="/images/doc.png"
+                src={item.image}
                 alt="img from database"
               />
             </div>
