@@ -10,41 +10,8 @@ export default function Results() {
   const [searchResults, setSearchResults] = useState([]);
 
   useEffect(() => {
-    setSearchResults([
-      {
-        name: "Doctor 1",
-        employer: "Employer",
-        rating: 3,
-        image: "/images/doc.png",
-        bio: `Here's a brief bio about this healthcare practitioner. They mostly do this type of work.`,
-        tags: ["transgender", "POC", "women"],
-      },
-      {
-        name: "Doctor 2",
-        employer: "Employer",
-        rating: 1,
-        image: "/images/doc.png",
-        bio: `Here's a brief bio about this healthcare practitioner. They mostly do this type of work.`,
-        tags: ["POC"],
-      },
-      {
-        name: "Doctor 3",
-        employer: "Employer",
-        rating: 5,
-        image: "/images/doc.png",
-        bio: `Here's a brief bio about this healthcare practitioner. They mostly do this type of work.`,
-        tags: ["transgender", "women"],
-      },
-      {
-        name: "Doctor 4",
-        employer: "Employer",
-        rating: 2,
-        image: "/images/doc.png",
-        bio: `Here's a brief bio about this healthcare practitioner. They mostly do this type of work.`,
-        tags: ["women"],
-      },
-    ]);
-  }, []);
+    setSearchResults(state.searchResults);
+  }, [state.searchResults]);
 
   const searchTag = (tag) => {
     // search based on selected tag
@@ -81,7 +48,7 @@ export default function Results() {
               <StarRating
                 name='rating'
                 numberOfStars={5}
-                rating={item.rating}
+                rating={item.ratings.reduce((a, b) => a + b, 0) / item.numRatings}
                 starDimension="20px"
                 starRatedColor="gold"
                 starSpacing="0"
@@ -90,11 +57,11 @@ export default function Results() {
               <p className="tags">
                 Tags:{" "}
                 {item.tags.map((tag, j) => (
-                  // turn into links, clicking returns results of clicked tag
                   <span className="this-tag" key={j} onClick={() => searchTag(tag)}>
                     {(j ? ", " : "") + tag}
                   </span>
                 ))}
+                {/* {item.tags.join(', ')} */}
               </p>
             </div>
           </div>
