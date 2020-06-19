@@ -1,27 +1,44 @@
-import React, { useState } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import "./Searchbar.css";
 import Checkbox from "../Checkbox/Checkbox";
 import { useHistory } from "react-router-dom";
+import { Context } from "../App/App";
 
 export default function Searchbar() {
   const history = useHistory();
-  const [GP, setGP] = useState(false);
-  const [therapist, setTherapist] = useState(false);
-  const [POC, setPOC] = useState(false);
-  const [trans, setTrans] = useState(false);
-  const [women, setWomen] = useState(false);
-  const [placeholder, setPlaceholder] = useState(false);
-  const [checkboxes, setCheckboxes] = useState([
-    { setting: setGP, label: "General Practitioner" },
-    { setting: setTherapist, label: "Therapist" },
-    { setting: setPOC, label: "POC" },
-    { setting: setTrans, label: "Transgender" },
-    { setting: setWomen, label: "Women" },
-    { setting: setPlaceholder, label: "Placeholder" },
-  ]);
+  const { state, dispatch } = useContext(Context);
+  const [selectedFilters, setSelectedFilters] = useState([]);
+  const [checkboxes, setCheckboxes] = useState(["General Practitioner", "Therapist", "POC", "Transgender", "Women", "Placeholder"]);
+
+  const handleFilterChange = (e, label) => {
+    if (e) {
+      setSelectedFilters((selectedFilters) => [...selectedFilters, label]);
+    } else {
+      setSelectedFilters(selectedFilters.filter((tag) => tag !== label));
+    }
+  };
 
   const postSearch = () => {
-    // generate search based on local state filters and zipcode/city
+    const all = state.allPractitioners;
+    const matches = [];
+    for (let i = 0; i < Object.keys(all).length; i++) {
+      if (Object.values(all)[i].tags) {
+        for (let tag of Object.values(all)[i].tags) {
+          for (let filter of selectedFilters) {
+            if (tag.toLowerCase() == filter.toLowerCase() && !matches.includes(Object.values(all)[i].bio)) {
+              if(matches.length === 0){
+                matches.push(Object.entries(all)[i].filter(key => key !== Object.keys(all)[i]));
+              } else {
+                if(!Object.values(matches)[matches.length-1][0].bio.includes(Object.values(all)[i].bio)) {
+                  matches.push(Object.entries(all)[i].filter(key => key !== Object.keys(all)[i]));
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    dispatch({ type: `SET_SEARCH_RESULTS`, payload: matches});
     history.push("/results");
   };
 
@@ -29,10 +46,11 @@ export default function Searchbar() {
     <div id="search-container">
       {/* add icon to searchbar */}
       {/* searchbar will only be available once zipcode logic is implemented */}
+      {/* for now will just search minneapolis area */}
       {/* <input id="searchbar" type="text" placeholder="enter zipcode or city" /> */}
       <div id="filter-grid">
-        {checkboxes.map((item, i) => (
-          <Checkbox key={i} label={item.label} setting={item.setting} />
+        {checkboxes.map((label, i) => (
+          <Checkbox key={i} label={label} onChange={handleFilterChange} />
         ))}
       </div>
       <button id="search-btn" onClick={postSearch}>

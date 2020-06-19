@@ -7,7 +7,7 @@ export default function Checkbox(props) {
         <input
           style={{ marginRight: "0.5rem" }}
           type="checkbox"
-          onChange={(e) => props.setting(e.target.checked)}
+          onChange={(e) => props.onChange(e.target.checked, props.label)}
         />
         {props.label}
       </label>
