@@ -25,7 +25,7 @@ export default function Searchbar() {
       if (Object.values(all)[i].tags) {
         for (let tag of Object.values(all)[i].tags) {
           for (let filter of selectedFilters) {
-            if (tag.toLowerCase() == filter.toLowerCase() && !matches.includes(Object.values(all)[i].bio)) {
+            if (tag.toLowerCase() === filter.toLowerCase() && !matches.includes(Object.values(all)[i].bio)) {
               if(matches.length === 0){
                 matches.push(Object.entries(all)[i].filter(key => key !== Object.keys(all)[i]));
               } else {
