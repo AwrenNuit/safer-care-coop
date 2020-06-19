@@ -21,16 +21,20 @@ export default function Searchbar() {
   const postSearch = () => {
     const all = state.allPractitioners;
     const matches = [];
-    for (let i = 0; i < Object.keys(all).length; i++) {
-      if (Object.values(all)[i].tags) {
-        for (let tag of Object.values(all)[i].tags) {
-          for (let filter of selectedFilters) {
-            if (tag.toLowerCase() === filter.toLowerCase() && !matches.includes(Object.values(all)[i].bio)) {
-              if(matches.length === 0){
-                matches.push(Object.entries(all)[i].filter(key => key !== Object.keys(all)[i]));
-              } else {
-                if(!Object.values(matches)[matches.length-1][0].bio.includes(Object.values(all)[i].bio)) {
+    if(selectedFilters.length === 0) {
+      matches.push(Object.values(state.allPractitioners));
+    } else {
+      for (let i = 0; i < Object.keys(all).length; i++) {
+        if (Object.values(all)[i].tags) {
+          for (let tag of Object.values(all)[i].tags) {
+            for (let filter of selectedFilters) {
+              if (tag.toLowerCase() === filter.toLowerCase() && !matches.includes(Object.values(all)[i].bio)) {
+                if(matches.length === 0){
                   matches.push(Object.entries(all)[i].filter(key => key !== Object.keys(all)[i]));
+                } else {
+                  if(!Object.values(matches)[matches.length-1][0].bio.includes(Object.values(all)[i].bio)) {
+                    matches.push(Object.entries(all)[i].filter(key => key !== Object.keys(all)[i]));
+                  }
                 }
               }
             }
