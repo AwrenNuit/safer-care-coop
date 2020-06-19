@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from "react";
+import React, { useState, useContext } from "react";
 import "./Searchbar.css";
 import Checkbox from "../Checkbox/Checkbox";
 import { useHistory } from "react-router-dom";
