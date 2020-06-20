@@ -71,7 +71,8 @@ export default function Results() {
               <StarRating
                 name='rating'
                 numberOfStars={5}
-                rating={item.ratings.reduce((a, b) => a + b, 0) / item.numRatings}
+                // fix this to account for undefined or null ratings & numRatings
+                // rating={Object.values(item.ratings).reduce((a, b) => a + b, 0) / item.numRatings}
                 starDimension="20px"
                 starRatedColor="gold"
                 starSpacing="0"
@@ -84,7 +85,6 @@ export default function Results() {
                     {(j ? ", " : "") + tag}
                   </span>
                 ))}
-                {/* {item.tags.join(', ')} */}
               </p>
             </div>
           </div>

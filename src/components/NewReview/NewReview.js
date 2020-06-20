@@ -1,18 +1,32 @@
 import React, { useState } from "react";
 import StarRating from "react-star-ratings";
+import { db } from "../../firebase";
 
-export default function NewReview() {
+export default function NewReview(props) {
   const [name, setName] = useState("");
   const [review, setReview] = useState("");
   const [starRating, setStarRating] = useState(3);
   const day = new Date().getDate();
   const month = new Date().toLocaleString("default", { month: "long" });
   const year = new Date().getFullYear();
+  const date = `${month} ${day}, ${year}`;
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // dispatch data to database
+    db.ref(`${props.thisPractitioner}/reviews`).push().set({
+        date: date,
+        name: name || "Anonymous",
+        rating: starRating,
+        review: review,
+    });
+    db.ref(`${props.thisPractitioner}/numRatings`).transaction((currentValue) => {
+      return (currentValue || 0) + 1
+    });
+    db.ref(`${props.thisPractitioner}/ratings`).update({
+      [new Date()]: starRating
+    });
   };
+  
 
   return (
     <form onSubmit={handleSubmit}>
@@ -42,7 +56,7 @@ export default function NewReview() {
           onChange={(e) => setName(e.target.value)}
           value={name}
         />
-        <p>{`${month} ${day}, ${year}`}</p>
+        <p>{date}</p>
         <br />
         <textarea
           style={{ width: "100%" }}
