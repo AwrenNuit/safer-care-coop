@@ -80,11 +80,15 @@ export default function Results() {
               <p>{item.bio}</p>
               <p className="tags">
                 Tags:{" "}
-                {item.tags.map((tag, j) => (
-                  <span className="this-tag" key={j} onClick={() => searchTag(tag)}>
-                    {(j ? ", " : "") + tag}
-                  </span>
-                ))}
+                {item.tags ?
+                  item.tags.map((tag, j) => (
+                    <span className="this-tag" key={j} onClick={() => searchTag(tag)}>
+                      {(j ? ", " : "") + tag}
+                    </span>
+                  ))
+                :
+                  <span>No tags yet</span>
+                }
               </p>
             </div>
           </div>

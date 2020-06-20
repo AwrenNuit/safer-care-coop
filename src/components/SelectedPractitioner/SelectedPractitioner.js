@@ -1,4 +1,5 @@
 import React, { useContext, useState, useEffect } from "react";
+import { useHistory } from "react-router-dom";
 import './SelectedPractitioner.css';
 import { Context } from "../App/App";
 import StarRating from 'react-star-ratings';
@@ -7,11 +8,15 @@ import NewReview from "../NewReview/NewReview";
 
 export default function SelectedPractitioner() {
   const { state, dispatch } = useContext(Context);
+  const history = useHistory();
   const practitioner = state.selectedPractitioner;
   const [calculatedRating, setCalculatedRating] = useState(0);
   const [zeroRatings, setZeroRatings] = useState(false);
 
   useEffect(() => {
+    if(!state.selectedPractitioner.name) {
+      history.push('/')
+    }
     if(practitioner.ratings) {
       setCalculatedRating(Object.values(practitioner.ratings).reduce((a, b) => a + b, 0) / practitioner.numRatings);
     } else {
@@ -35,16 +40,20 @@ export default function SelectedPractitioner() {
             starSpacing="0"
           />
           {zeroRatings ?
-            <p>no ratings</p>
+            <p>no ratings yet</p>
           :
             ''
           }
           <p>{practitioner.bio}</p>
-          <p>Tags: {practitioner.tags.map((tag, i) => <span key={i}>{tag}</span>)}</p>
+          {practitioner.tags ?
+            <p>Tags: {practitioner.tags.map((tag, i) => <span key={i}>{tag}</span>)}</p>
+          :
+            <p>Tags: No tags yet</p>
+          }
         </div>
       </div>
       <NewReview thisPractitioner={practitioner.name} ratings={practitioner.ratings} numRatings={practitioner.numRatings} />
-      <Reviews />
+      <Reviews reviews={practitioner.reviews} />
     </div>
   );
 }
