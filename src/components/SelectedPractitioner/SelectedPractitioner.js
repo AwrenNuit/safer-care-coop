@@ -26,10 +26,10 @@ export default function SelectedPractitioner() {
 
   return (
     <div className="main-container">
-      <h1>{practitioner.name}</h1>
       <div id="selected-grid">
         <img id="selected-img" src={practitioner.image} alt="" />
         <div>
+          <h1>{practitioner.name}</h1>
           <p>{practitioner.employer}</p>
           <StarRating
             name='rating'
@@ -46,7 +46,7 @@ export default function SelectedPractitioner() {
           }
           <p>{practitioner.bio}</p>
           {practitioner.tags ?
-            <p>Tags: {practitioner.tags.map((tag, i) => <span key={i}>{tag}</span>)}</p>
+            <p className="tags">Tags: {practitioner.tags.map((tag, i) => <span className="this-tag" key={i}>{tag}</span>)}</p>
           :
             <p>Tags: No tags yet</p>
           }

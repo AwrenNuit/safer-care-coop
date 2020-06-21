@@ -1,6 +1,7 @@
 #selected-grid {
   display: grid;
   grid-template-columns: 1fr 3fr;
+  position: relative;
 }
 
 #selected-img {
