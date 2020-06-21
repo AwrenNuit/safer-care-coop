@@ -49,7 +49,7 @@ export default function SelectedPractitioner() {
               Tags:{" "}
               {practitioner.tags.map((tag, i) => (
                 <span className="this-tag" key={i}>
-                  {tag}
+                  {(i ? ", " : "") + tag}
                 </span>
               ))}
             </p>
