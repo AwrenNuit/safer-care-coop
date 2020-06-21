@@ -98,6 +98,7 @@ export default function Results() {
               />
               {!item.ratings || !item.numRatings ? <p>no ratings yet</p> : ""}
               <p>{item.bio}</p>
+              <div style={{display:"inline-block", float:"left", height: "60px"}}></div>
               <p className="tags">
                 Tags:{" "}
                 {item.tags ? (

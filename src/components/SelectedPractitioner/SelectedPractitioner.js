@@ -44,6 +44,7 @@ export default function SelectedPractitioner() {
           />
           {zeroRatings ? <p>no ratings yet</p> : ""}
           <p>{practitioner.bio}</p>
+          <div style={{display:"inline-block", float:"left", height: "60px"}}></div>
           {practitioner.tags ? (
             <p className="tags">
               Tags:{" "}
