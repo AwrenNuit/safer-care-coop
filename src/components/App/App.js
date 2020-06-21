@@ -21,10 +21,13 @@ const initialState = {
   },
   allPractitioners: [],
   searchResults: [],
+  selectedTag: "",
 };
 
 const contextReducer = (state, action) => {
   switch (action.type) {
+    case `SET_SELECTED_TAG`:
+      return { ...state, selectedTag: action.payload };
     case `SET_DOCTOR`:
       return { ...state, selectedPractitioner: action.payload };
     case `SET_PRACTITIONERS`:
@@ -37,10 +40,7 @@ const contextReducer = (state, action) => {
 };
 
 export default function App() {
-  const [state, dispatch] = useReducer(
-    contextReducer,
-    initialState
-  );
+  const [state, dispatch] = useReducer(contextReducer, initialState);
 
   useEffect(() => {
     db.ref().once("value", (snapshot) => {
