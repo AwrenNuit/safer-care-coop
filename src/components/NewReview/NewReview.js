@@ -1,8 +1,10 @@
 import React, { useState } from "react";
+import { useHistory } from "react-router-dom";
 import StarRating from "react-star-ratings";
 import { db } from "../../firebase";
 
 export default function NewReview(props) {
+  const history = useHistory();
   const [name, setName] = useState("");
   const [review, setReview] = useState("");
   const [starRating, setStarRating] = useState(3);
@@ -13,20 +15,41 @@ export default function NewReview(props) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    db.ref(`${props.thisPractitioner}/reviews`).push().set({
+    postReview();
+    incrementNumberOfRatings();
+    postRating(Math.random().toString(36).substr(2, 13));
+    thankAndRedirect();
+  };
+
+  const incrementNumberOfRatings = () => {
+    db.ref(`${props.thisPractitioner}/numRatings`).transaction(
+      (currentValue) => {
+        return (currentValue || 0) + 1;
+      }
+    );
+  };
+
+  const postRating = (randomID) => {
+    db.ref(`${props.thisPractitioner}/ratings`).update({
+      [new Date() + randomID]: starRating,
+    });
+  };
+
+  const postReview = () => {
+    db.ref(`${props.thisPractitioner}/reviews`)
+      .push()
+      .set({
         date: date,
         name: name || "Anonymous",
         rating: starRating,
         review: review,
-    });
-    db.ref(`${props.thisPractitioner}/numRatings`).transaction((currentValue) => {
-      return (currentValue || 0) + 1
-    });
-    db.ref(`${props.thisPractitioner}/ratings`).update({
-      [new Date()]: starRating
-    });
+      });
   };
-  
+
+  const thankAndRedirect = () => {
+    alert(`Thank you for contributing! ♥`);
+    history.push("/");
+  };
 
   return (
     <form onSubmit={handleSubmit}>
