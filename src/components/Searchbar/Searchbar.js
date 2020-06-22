@@ -18,7 +18,7 @@ export default function Searchbar() {
   ]);
 
   useEffect(() => {
-    if(state.selectedTag){
+    if (state.selectedTag) {
       setSelectedFilters(() => [state.selectedTag]);
     }
   }, [state.selectedTag]);
