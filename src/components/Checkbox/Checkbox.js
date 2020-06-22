@@ -9,6 +9,9 @@ export default function Checkbox(props) {
     if (state.selectedTag.toLowerCase() === props.label.toLowerCase()) {
       setIsChecked(true);
     }
+    else if(state.selectedTag.length > 0) {
+      setIsChecked(false);
+    }
   }, [state.selectedTag]);
 
   const handleClick = () => {
