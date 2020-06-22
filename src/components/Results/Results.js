@@ -81,8 +81,8 @@ export default function Results() {
               <h2 className="results-name" onClick={() => selectDoctor(item)}>
                 {item.name}
               </h2>
-              <p>
-                <i>{item.employer}</i>
+              <p style={{ fontStyle: "italic" }}>
+                {item.employer}&nbsp;&nbsp;&nbsp;&nbsp;{item.phone}
               </p>
               <StarRating
                 name="rating"
