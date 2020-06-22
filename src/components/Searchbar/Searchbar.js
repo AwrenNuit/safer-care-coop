@@ -77,9 +77,6 @@ export default function Searchbar() {
 
   return (
     <div id="search-container">
-      {JSON.stringify(state.selectedTag)}
-      <br/>
-      {JSON.stringify(selectedFilters)}
       {/* add icon to searchbar */}
       {/* searchbar will only be available once zipcode logic is implemented */}
       {/* for now will just search minneapolis area */}
