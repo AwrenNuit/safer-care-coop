@@ -22,6 +22,7 @@ const initialState = {
   allPractitioners: [],
   searchResults: [],
   selectedTag: "",
+  toast: false,
 };
 
 const contextReducer = (state, action) => {
@@ -34,6 +35,10 @@ const contextReducer = (state, action) => {
       return { ...state, allPractitioners: action.payload };
     case `SET_SEARCH_RESULTS`:
       return { ...state, searchResults: action.payload.flat(Infinity) };
+    case `SHOW_TOAST`:
+      return { ...state, toast: true };
+    case `CLEAR_TOAST`:
+      return { ...state, toast: false };
     default:
       return initialState;
   }

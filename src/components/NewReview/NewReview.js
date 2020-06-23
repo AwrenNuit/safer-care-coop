@@ -1,11 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { useHistory } from "react-router-dom";
 import StarRating from "react-star-ratings";
 import { db } from "../../firebase";
-import { ToastContainer, toast } from "react-toastify";
-import 'react-toastify/dist/ReactToastify.css';
+import { Context } from "../App/App";
 
 export default function NewReview(props) {
+  const { state, dispatch } = useContext(Context);
   const history = useHistory();
   const [name, setName] = useState("");
   const [review, setReview] = useState("");
@@ -49,15 +49,7 @@ export default function NewReview(props) {
   };
 
   const thankAndRedirect = () => {
-    toast('💜 Thank you for contributing!', {
-      position: "bottom-center",
-      autoClose: 3000,
-      hideProgressBar: true,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-    });
+    dispatch({ type: `SHOW_TOAST` });
     history.push("/");
   };
 
@@ -107,17 +99,6 @@ export default function NewReview(props) {
           </button>
         </div>
       </form>
-      <ToastContainer
-        position="bottom-center"
-        autoClose={5000}
-        hideProgressBar
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-      />
     </>
   );
 }
