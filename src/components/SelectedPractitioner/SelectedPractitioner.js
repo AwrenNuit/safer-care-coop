@@ -29,6 +29,7 @@ export default function SelectedPractitioner() {
 
   return (
     <div className="main-container">
+      {/* TO DO: add BACK button to return to search results */}
       <div id="selected-grid">
         <img id="selected-img" src={practitioner.image} alt="" />
         <div>
@@ -47,6 +48,7 @@ export default function SelectedPractitioner() {
           <div
             style={{ display: "inline-block", float: "left", height: "60px" }}
           ></div>
+          {/* TO DO: make tags show search results of selected tag on click */}
           {practitioner.tags ? (
             <p className="tags">
               Tags:{" "}
