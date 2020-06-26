@@ -14,7 +14,7 @@ export default function Searchbar() {
     "POC",
     "Transgender",
     "Women",
-    "Placeholder",
+    "Queer",
   ]);
 
   useEffect(() => {
