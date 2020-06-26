@@ -6,6 +6,7 @@ import Results from "../Results/Results";
 import Home from "../Home/Home";
 import SelectedPractitioner from "../SelectedPractitioner/SelectedPractitioner";
 import { db } from "../../firebase";
+import NewPractitioner from "../AddPractitioner/NewPractitioner";
 
 export const Context = React.createContext();
 
@@ -57,6 +58,7 @@ export default function App() {
     <Context.Provider value={{ state, dispatch }}>
       <Router>
         <Header />
+        <NewPractitioner />
         <Route exact path="/" component={Home} />
         <Route exact path="/results" component={Results} />
         <Route
