@@ -9,7 +9,7 @@ export default function Searchbar() {
   const { state, dispatch } = useContext(Context);
   const [selectedFilters, setSelectedFilters] = useState([]);
   const [checkboxes, setCheckboxes] = useState([
-    "General Practitioner",
+    "Physician",
     "Therapist",
     "POC",
     "Transgender",
