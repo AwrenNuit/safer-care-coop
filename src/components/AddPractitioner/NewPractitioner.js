@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import StarRating from "react-star-ratings";
-import TextInput from "./TextInput";
+import Input from "./Input";
 
 export default function NewPractitioner() {
   const [bio, setBio] = useState("");
@@ -8,81 +8,93 @@ export default function NewPractitioner() {
   const [image, setImage] = useState("");
   const [name, setName] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
+  const [physician, setPhysician] = useState(false);
+  const [POC, setPOC] = useState(false);
+  const [queer, setQueer] = useState(false);
+  const [therapist, setTherapist] = useState(false);
+  const [transgender, setTransgender] = useState(false);
+  const [women, setWomen] = useState(false);
   const [starRating, setStarRating] = useState(3);
-
-  const handleChange = (e, updateState) => updateState(e);
 
   return (
     <>
       <form>
         <h1>Add-a-Doc</h1>
         <div>
-          <TextInput
-            thisValueSet={setName}
+          <Input
             label="Practitioner Name: "
-            handleChange={handleChange}
             placeholder="name"
+            setValue={setName}
             type="text"
             value={name}
           />
-          <TextInput
-            thisValueSet={setEmployer}
+          <Input
             label="Employer: "
-            handleChange={handleChange}
             placeholder="employer"
+            setValue={setEmployer}
             type="text"
             value={employer}
           />
-          <TextInput
-            thisValueSet={setPhoneNumber}
+          <Input
             label="Phone Number: "
-            handleChange={handleChange}
             placeholder="xxx-xxx-xxxx"
+            setValue={setPhoneNumber}
             type="text"
             value={phoneNumber}
           />
-          <TextInput
-            thisValueSet={setImage}
+          <Input
             label="Picture: "
-            handleChange={handleChange}
             placeholder="image url"
+            setValue={setImage}
             type="text"
             value={image}
           />
-          <TextInput
-            thisValueSet={setBio}
+          <Input
             label="Background & Services: "
-            handleChange={handleChange}
             placeholder="background"
+            setValue={setBio}
             type="text"
             value={bio}
           />
 
           <p>Tags</p>
-          <label>
-            <input type="checkbox" />
-            GP
-          </label>
-          <label>
-            <input type="checkbox" />
-            Therapist
-          </label>
-          <label>
-            <input type="checkbox" />
-            POC
-          </label>
-          <label>
-            <input type="checkbox" />
-            Transgender
-          </label>
-          <label>
-            <input type="checkbox" />
-            Woman
-          </label>
-          <label>
-            <input type="checkbox" />
-            Placeholder
-          </label>
+          <Input
+            label="Physician"
+            setValue={setPhysician}
+            type="checkbox"
+            value={physician}
+          />
+          <Input
+            label="Therapist"
+            setValue={setTherapist}
+            type="checkbox"
+            value={therapist}
+          />
+          <Input
+            label="POC"
+            setValue={setPOC}
+            type="checkbox"
+            value={POC}
+          />
+          <Input
+            label="Transgender"
+            setValue={setTransgender}
+            type="checkbox"
+            value={transgender}
+          />
+          <Input
+            label="Women"
+            setValue={setWomen}
+            type="checkbox"
+            value={women}
+          />
+          <Input
+            label="Queer"
+            setValue={setQueer}
+            type="checkbox"
+            value={queer}
+          />
+
           <br />
           <p>Your Rating & Review (optional but helpful!)</p>
           <StarRating
