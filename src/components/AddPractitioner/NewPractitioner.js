@@ -20,64 +20,20 @@ export default function NewPractitioner() {
     console.log("state:", Object.keys(state.allPractitioners));
     if (!Object.keys(state.allPractitioners).includes(name)) {
       if (name && employer && phoneNumber) {
-        if (tags.includes('Physician') || tags.includes('Therapist')) {
-          if(starRating) {
-            db.ref(name).set({
-              bio,
-              employer,
-              image,
-              name,
-              numRatings: 1,
-              phone: phoneNumber,
-              ratings: starRating,
-              reviews: [],
-              tags: tags,
-            });
-          }
-          else if(review) {
-            db.ref(name).set({
-              bio,
-              employer,
-              image,
-              name,
-              numRatings: 0,
-              phone: phoneNumber,
-              ratings: [],
-              reviews: review,
-              tags: tags,
-            });
-          }
-          else if(starRating && review) {
-            db.ref(name).set({
-              bio,
-              employer,
-              image,
-              name,
-              numRatings: 1,
-              phone: phoneNumber,
-              ratings: starRating,
-              reviews: review,
-              tags: tags,
-            });
+        if (tags.includes("Physician*") || tags.includes("Therapist*")) {
+          if (starRating && review) {
+            postWithRatingAndReview();
+          } else if (starRating) {
+            postWithRating();
+          } else if (review) {
+            postWithReview();
           } else {
-            db.ref(name).set({
-              bio,
-              employer,
-              image,
-              name,
-              numRatings: 0,
-              phone: phoneNumber,
-              ratings: [],
-              reviews: [],
-              tags: tags,
-            });
+            PostWithNoReviewOrRating();
           }
-        }
-        else {
+        } else {
           alert(`Please select 'Physician' or 'Therapist' tag.`);
         }
-      }
-      else {
+      } else {
         alert(`Please enter practitioner Name, Employer, and Phone Number.`);
       }
     }
@@ -89,6 +45,83 @@ export default function NewPractitioner() {
     } else {
       setTags(tags.filter((item) => item !== tag));
     }
+  };
+
+  const postRating = () => {
+    db.ref(`${name}/ratings`).update({
+      [new Date()]: starRating,
+    });
+  };
+
+  const postReview = () => {
+    db.ref(`${props.thisPractitioner}/reviews`)
+      .push()
+      .set({
+        date: date,
+        name: name || "Anonymous",
+        rating: starRating,
+        review: review,
+      });
+  };
+
+  const PostWithNoReviewOrRating = () => {
+    db.ref(name).set({
+      bio,
+      employer,
+      image,
+      name,
+      numRatings: 0,
+      phone: phoneNumber,
+      ratings: [],
+      reviews: [],
+      tags: tags,
+    });
+  };
+
+  const postWithRating = async () => {
+    await db.ref(name).set({
+      bio,
+      employer,
+      image,
+      name,
+      numRatings: 1,
+      phone: phoneNumber,
+      ratings: [],
+      reviews: [],
+      tags: tags,
+    });
+    postRating();
+  };
+
+  const postWithRatingAndReview = async () => {
+    await db.ref(name).set({
+      bio,
+      employer,
+      image,
+      name,
+      numRatings: 1,
+      phone: phoneNumber,
+      ratings: [],
+      reviews: [],
+      tags: tags,
+    });
+    postRating();
+    postReview();
+  };
+
+  const postWithReview = async () => {
+    await db.ref(name).set({
+      bio,
+      employer,
+      image,
+      name,
+      numRatings: 0,
+      phone: phoneNumber,
+      ratings: [],
+      reviews: [],
+      tags: tags,
+    });
+    postReview();
   };
 
   return (
@@ -149,11 +182,7 @@ export default function NewPractitioner() {
               label="Therapist*"
               type="checkbox"
             />
-            <Input
-              handleChange={handleTagChange}
-              label="POC"
-              type="checkbox"
-            />
+            <Input handleChange={handleTagChange} label="POC" type="checkbox" />
             <Input
               handleChange={handleTagChange}
               label="Transgender"
