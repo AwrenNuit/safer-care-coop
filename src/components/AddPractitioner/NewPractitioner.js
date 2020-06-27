@@ -1,47 +1,120 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import { db } from "../../firebase";
+import { Context } from "../App/App";
 import StarRating from "react-star-ratings";
 import Input from "./Input";
 
 export default function NewPractitioner() {
+  const { state, dispatch } = useContext(Context);
   const [bio, setBio] = useState("");
   const [employer, setEmployer] = useState("");
   const [image, setImage] = useState("");
   const [name, setName] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
-  const [physician, setPhysician] = useState(false);
-  const [POC, setPOC] = useState(false);
-  const [queer, setQueer] = useState(false);
-  const [therapist, setTherapist] = useState(false);
-  const [transgender, setTransgender] = useState(false);
-  const [women, setWomen] = useState(false);
+  const [review, setReview] = useState("");
   const [starRating, setStarRating] = useState(3);
+  const [tags, setTags] = useState([]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("asdasdasd");
+    console.log("state:", Object.keys(state.allPractitioners));
+    if (!Object.keys(state.allPractitioners).includes(name)) {
+      if (name && employer && phoneNumber) {
+        if (tags.includes('Physician') || tags.includes('Therapist')) {
+          if(starRating) {
+            db.ref(name).set({
+              bio,
+              employer,
+              image,
+              name,
+              numRatings: 1,
+              phone: phoneNumber,
+              ratings: starRating,
+              reviews: [],
+              tags: tags,
+            });
+          }
+          else if(review) {
+            db.ref(name).set({
+              bio,
+              employer,
+              image,
+              name,
+              numRatings: 0,
+              phone: phoneNumber,
+              ratings: [],
+              reviews: review,
+              tags: tags,
+            });
+          }
+          else if(starRating && review) {
+            db.ref(name).set({
+              bio,
+              employer,
+              image,
+              name,
+              numRatings: 1,
+              phone: phoneNumber,
+              ratings: starRating,
+              reviews: review,
+              tags: tags,
+            });
+          } else {
+            db.ref(name).set({
+              bio,
+              employer,
+              image,
+              name,
+              numRatings: 0,
+              phone: phoneNumber,
+              ratings: [],
+              reviews: [],
+              tags: tags,
+            });
+          }
+        }
+        else {
+          alert(`Please select 'Physician' or 'Therapist' tag.`);
+        }
+      }
+      else {
+        alert(`Please enter practitioner Name, Employer, and Phone Number.`);
+      }
+    }
   };
+
+  const handleTagChange = (e, tag) => {
+    if (e) {
+      setTags((tags) => [...tags, tag]);
+    } else {
+      setTags(tags.filter((item) => item !== tag));
+    }
+  };
+
   return (
     <>
       <form onSubmit={(e) => handleSubmit(e)}>
         <h1>Add-a-Doc</h1>
         <div>
           <div>
+            <p>*Name, Employer, and Phone Number required*</p>
+            {/* set required prop for some */}
             <Input
-              label="Practitioner Name: "
+              label="Practitioner Name*: "
               placeholder="name"
               setValue={setName}
               type="text"
               value={name}
             />
             <Input
-              label="Employer: "
+              label="Employer*: "
               placeholder="employer"
               setValue={setEmployer}
               type="text"
               value={employer}
             />
             <Input
-              label="Phone Number: "
+              label="Phone Number*: "
               placeholder="xxx-xxx-xxxx"
               setValue={setPhoneNumber}
               type="text"
@@ -62,43 +135,45 @@ export default function NewPractitioner() {
               value={bio}
             />
           </div>
+
           <div>
-            <p>Tags</p>
+            <h2>Tags</h2>
+            <p>*Physician or Therapist required*</p>
             <Input
-              label="Physician"
-              setValue={setPhysician}
+              handleChange={handleTagChange}
+              label="Physician*"
               type="checkbox"
-              value={physician}
             />
             <Input
-              label="Therapist"
-              setValue={setTherapist}
+              handleChange={handleTagChange}
+              label="Therapist*"
               type="checkbox"
-              value={therapist}
             />
-            <Input label="POC" setValue={setPOC} type="checkbox" value={POC} />
             <Input
+              handleChange={handleTagChange}
+              label="POC"
+              type="checkbox"
+            />
+            <Input
+              handleChange={handleTagChange}
               label="Transgender"
-              setValue={setTransgender}
               type="checkbox"
-              value={transgender}
             />
             <Input
+              handleChange={handleTagChange}
               label="Women"
-              setValue={setWomen}
               type="checkbox"
-              value={women}
             />
             <Input
+              handleChange={handleTagChange}
               label="Queer"
-              setValue={setQueer}
               type="checkbox"
-              value={queer}
             />
           </div>
 
           <div>
-            <p>Your Rating & Review (optional but helpful!)</p>
+            <h2>Your Rating & Review</h2>
+            <p>*Optional but helpful!*</p>
             <StarRating
               changeRating={(rating) => setStarRating(rating)}
               isSelectable={true}
@@ -110,7 +185,13 @@ export default function NewPractitioner() {
               starRatedColor="gold"
               starSpacing="0"
             />
-            <input type="text" placeholder="your review" />
+            <Input
+              label="Review: "
+              placeholder="your review"
+              setValue={setReview}
+              type="text"
+              value={review}
+            />
           </div>
           <div>
             <button type="submit">SUBMIT</button>

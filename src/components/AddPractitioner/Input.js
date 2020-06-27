@@ -16,7 +16,7 @@ export default function Input(props) {
       ) : (
         <label>
           <input
-            onChange={(e) => props.setValue(e.target.checked)}
+            onChange={(e) => props.handleChange(e.target.checked, props.label)}
             type={props.type}
             value={props.value}
           />
