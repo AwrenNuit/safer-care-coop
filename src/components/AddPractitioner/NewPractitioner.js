@@ -2,6 +2,7 @@ import React, { useState, useContext } from "react";
 import { db } from "../../firebase";
 import { Context } from "../App/App";
 import StarRating from "react-star-ratings";
+import "./NewPractitioner.css";
 import Input from "./Input";
 
 export default function NewPractitioner() {
@@ -12,8 +13,13 @@ export default function NewPractitioner() {
   const [name, setName] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
   const [review, setReview] = useState("");
+  const [reviewName, setReviewName] = useState("");
   const [starRating, setStarRating] = useState(3);
   const [tags, setTags] = useState([]);
+  const day = new Date().getDate();
+  const month = new Date().toLocaleString("default", { month: "long" });
+  const year = new Date().getFullYear();
+  const date = `${month} ${day}, ${year}`;
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -54,11 +60,11 @@ export default function NewPractitioner() {
   };
 
   const postReview = () => {
-    db.ref(`${props.thisPractitioner}/reviews`)
+    db.ref(`${name}/reviews`)
       .push()
       .set({
         date: date,
-        name: name || "Anonymous",
+        name: reviewName || "Anonymous",
         rating: starRating,
         review: review,
       });
@@ -125,10 +131,10 @@ export default function NewPractitioner() {
   };
 
   return (
-    <>
+    <div className="main-container">
       <form onSubmit={(e) => handleSubmit(e)}>
-        <h1>Add-a-Doc</h1>
-        <div>
+        <div className="form-content-container">
+          <h1>Add-a-Doc</h1>
           <div>
             <p>*Name, Employer, and Phone Number required*</p>
             {/* set required prop for some */}
@@ -169,7 +175,7 @@ export default function NewPractitioner() {
             />
           </div>
 
-          <div>
+          <div style={{ marginTop: "20px" }}>
             <h2>Tags</h2>
             <p>*Physician or Therapist required*</p>
             <Input
@@ -200,7 +206,7 @@ export default function NewPractitioner() {
             />
           </div>
 
-          <div>
+          <div style={{ marginTop: "20px" }}>
             <h2>Your Rating & Review</h2>
             <p>*Optional but helpful!*</p>
             <StarRating
@@ -215,18 +221,30 @@ export default function NewPractitioner() {
               starSpacing="0"
             />
             <Input
-              label="Review: "
-              placeholder="your review"
-              setValue={setReview}
+              label="Your Name: "
+              placeholder="your name (optional)"
+              setValue={setReviewName}
               type="text"
-              value={review}
+              value={reviewName}
             />
+            <div>
+              <label>Review: </label>
+              <textarea
+                onChange={(e) => setReview(e.target.value)}
+                placeholder="your review"
+                rows="6"
+                style={{ width: "100%" }}
+                value={review}
+              ></textarea>
+            </div>
           </div>
           <div>
-            <button type="submit">SUBMIT</button>
+            <button type="submit" style={{ marginTop: "20px", width: "100%" }}>
+              SUBMIT
+            </button>
           </div>
         </div>
       </form>
-    </>
+    </div>
   );
 }
