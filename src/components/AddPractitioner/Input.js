@@ -2,20 +2,24 @@ import React from "react";
 
 export default function Input(props) {
   return (
-    <div>
+    <>
       {props.type === "text" ? (
-        <>
+        <div style={{ marginTop: "20px" }}>
           <label>{props.label}</label>
-          <input
-            onChange={(e) => props.setValue(e.target.value)}
-            placeholder={props.placeholder}
-            type={props.type}
-            value={props.value}
-          />
-        </>
+            <br />
+            <input
+              className="form-input"
+              onChange={(e) => props.setValue(e.target.value)}
+              placeholder={props.placeholder}
+              type={props.type}
+              value={props.value}
+            />
+        </div>
       ) : (
         <label>
+          <br />
           <input
+            name={props.name || null}
             onChange={(e) => props.handleChange(e.target.checked, props.label)}
             type={props.type}
             value={props.value}
@@ -23,6 +27,6 @@ export default function Input(props) {
           {props.label}
         </label>
       )}
-    </div>
+    </>
   );
 }

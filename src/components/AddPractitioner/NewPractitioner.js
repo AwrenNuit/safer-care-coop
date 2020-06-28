@@ -26,7 +26,7 @@ export default function NewPractitioner() {
     console.log("state:", Object.keys(state.allPractitioners));
     if (!Object.keys(state.allPractitioners).includes(name)) {
       if (name && employer && phoneNumber) {
-        if (tags.includes("Physician*") || tags.includes("Therapist*")) {
+        if (tags.includes("Physician") || tags.includes("Therapist")) {
           if (starRating && review) {
             postWithRatingAndReview();
           } else if (starRating) {
@@ -47,7 +47,15 @@ export default function NewPractitioner() {
 
   const handleTagChange = (e, tag) => {
     if (e) {
-      setTags((tags) => [...tags, tag]);
+      if (tag !== "Physician" && tag !== "Therapist") {
+        setTags((tags) => [...tags, tag]);
+      } else if (tag === "Physician" && !tags.includes("Physician")) {
+        setTags(tags.filter((item) => item !== "Therapist"));
+        setTimeout(() => setTags((tags) => [...tags, tag]), 10);
+      } else if (tag === "Therapist" && !tags.includes("Therapist")) {
+        setTags(tags.filter((item) => item !== "Physician"));
+        setTimeout(() => setTags((tags) => [...tags, tag]), 10);
+      }
     } else {
       setTags(tags.filter((item) => item !== tag));
     }
@@ -134,41 +142,40 @@ export default function NewPractitioner() {
     <div className="main-container">
       <form onSubmit={(e) => handleSubmit(e)}>
         <div className="form-content-container">
-          <h1>Add-a-Doc</h1>
+          <h1 style={{ textAlign: "center" }}>Add-a-Doc</h1>
           <div>
-            <p>*Name, Employer, and Phone Number required*</p>
-            {/* set required prop for some */}
+            {/* set required prop for some to change color */}
             <Input
-              label="Practitioner Name*: "
+              label="Practitioner Name (required)"
               placeholder="name"
               setValue={setName}
               type="text"
               value={name}
             />
             <Input
-              label="Employer*: "
-              placeholder="employer"
+              label="Employer (required)"
+              placeholder="employer name"
               setValue={setEmployer}
               type="text"
               value={employer}
             />
             <Input
-              label="Phone Number*: "
+              label="Phone Number (required)"
               placeholder="xxx-xxx-xxxx"
               setValue={setPhoneNumber}
               type="text"
               value={phoneNumber}
             />
             <Input
-              label="Picture: "
+              label="Picture"
               placeholder="image url"
               setValue={setImage}
               type="text"
               value={image}
             />
             <Input
-              label="Background & Services: "
-              placeholder="background"
+              label="Background & Services"
+              placeholder="what this person does"
               setValue={setBio}
               type="text"
               value={bio}
@@ -177,17 +184,21 @@ export default function NewPractitioner() {
 
           <div style={{ marginTop: "20px" }}>
             <h2>Tags</h2>
-            <p>*Physician or Therapist required*</p>
+            {JSON.stringify(tags)}
+            <p>Select One (required)</p>
             <Input
               handleChange={handleTagChange}
-              label="Physician*"
-              type="checkbox"
+              label="Physician"
+              name="doc-type"
+              type="radio"
             />
             <Input
               handleChange={handleTagChange}
-              label="Therapist*"
-              type="checkbox"
+              label="Therapist"
+              name="doc-type"
+              type="radio"
             />
+            <p>Select Any (optional)</p>
             <Input handleChange={handleTagChange} label="POC" type="checkbox" />
             <Input
               handleChange={handleTagChange}
@@ -239,7 +250,7 @@ export default function NewPractitioner() {
             </div>
           </div>
           <div>
-            <button type="submit" style={{ marginTop: "20px", width: "100%" }}>
+            <button type="submit" className="form-btn">
               SUBMIT
             </button>
           </div>
