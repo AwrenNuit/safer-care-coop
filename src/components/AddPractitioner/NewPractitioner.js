@@ -184,7 +184,6 @@ export default function NewPractitioner() {
 
           <div style={{ marginTop: "20px" }}>
             <h2>Tags</h2>
-            {JSON.stringify(tags)}
             <p>Select One (required)</p>
             <Input
               handleChange={handleTagChange}
@@ -238,7 +237,7 @@ export default function NewPractitioner() {
               type="text"
               value={reviewName}
             />
-            <div>
+            <div style={{ marginTop: "20px" }}>
               <label>Review: </label>
               <textarea
                 onChange={(e) => setReview(e.target.value)}
