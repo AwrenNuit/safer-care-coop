@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from "react";
-import { useHistory } from "react-router-dom";
+import { useHistory, Link } from "react-router-dom";
 import StarRating from "react-star-ratings";
 import "./Results.css";
 import { Context } from "../App/App";
@@ -67,6 +67,9 @@ export default function Results() {
   return (
     <div className="main-container">
       <h1>Practitioners in Your Area</h1>
+      <p style={{ margin: "10px 0" }}>
+        Don't see your doctor? Add them <Link to="/add-a-doc">HERE</Link>.
+      </p>
       <div>
         {searchResults.map((item, i) => (
           <div key={i} id="results-grid">

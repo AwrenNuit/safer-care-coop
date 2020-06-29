@@ -3,6 +3,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "./Home.css";
 import { Context } from "../App/App";
+import { Link } from "react-router-dom";
 
 export default function Home() {
   const { state, dispatch } = useContext(Context);
@@ -34,6 +35,11 @@ export default function Home() {
         do. The goal of [Safer Healthcare] is to make it easier for people who
         hold oppressed or marginalized identities to find a healthcare
         practitioner that will provide better care.
+      </p>
+      <br />
+      <p>
+        Start by using the searchbar up top. If you've seen an excellent practitioner feel
+        free to add them to the list <Link to="/add-a-doc">HERE</Link>.
       </p>
       <ToastContainer
         position="bottom-center"

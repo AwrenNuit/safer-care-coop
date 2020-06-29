@@ -58,8 +58,8 @@ export default function App() {
     <Context.Provider value={{ state, dispatch }}>
       <Router>
         <Header />
-        <NewPractitioner />
         <Route exact path="/" component={Home} />
+        <Route exact path="/add-a-doc" component={NewPractitioner} />
         <Route exact path="/results" component={Results} />
         <Route
           exact
