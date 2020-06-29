@@ -7,18 +7,3 @@
   margin: 0 auto;
   width: 80%;
 }
-
-.form-input {
-  border: 1px solid #a1a1a1;
-  border-radius: 10px;
-  font-size: 1.3rem;
-  height: 45px;
-  padding: 0 10px;
-  width: calc(100% - 20px);
-}
-
-.form-textarea {
-  font-size: 1.3rem;
-  padding: 10px;
-  width: calc(100% - 20px);
-}

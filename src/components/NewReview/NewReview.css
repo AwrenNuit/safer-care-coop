@@ -1,0 +1,8 @@
+.review-input {
+  border: 1px solid #a1a1a1;
+  border-radius: 10px;
+  font-size: 1.3rem;
+  height: 45px;
+  padding: 0 10px;
+  width: 200px;
+}

@@ -3,6 +3,7 @@ import { useHistory } from "react-router-dom";
 import StarRating from "react-star-ratings";
 import { db } from "../../firebase";
 import { Context } from "../App/App";
+import './NewReview.css';
 
 export default function NewReview(props) {
   const { state, dispatch } = useContext(Context);
@@ -77,15 +78,16 @@ export default function NewReview(props) {
             />
           </div>
           <input
-            type="text"
-            placeholder="name (optional)"
+            className="review-input"
             onChange={(e) => setName(e.target.value)}
+            placeholder="name (optional)"
+            type="text"
             value={name}
           />
           <p>{date}</p>
           <br />
           <textarea
-            style={{ width: "100%" }}
+            className="form-textarea"
             onChange={(e) => setReview(e.target.value)}
             placeholder="leave review"
             rows="6"

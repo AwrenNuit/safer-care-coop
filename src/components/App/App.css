@@ -104,3 +104,9 @@ button {
   top: 9px;
 	width: 8px;
 }
+
+.form-textarea {
+  font-size: 1.3rem;
+  padding: 10px;
+  width: calc(100% - 20px);
+}
