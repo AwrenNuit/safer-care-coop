@@ -224,18 +224,7 @@ export default function NewPractitioner() {
 
           <div style={{ marginTop: "20px" }}>
             <h2>Your Rating & Review</h2>
-            <p>*Optional but helpful!*</p>
-            <StarRating
-              changeRating={(rating) => setStarRating(rating)}
-              isSelectable={true}
-              name="rating"
-              numberOfStars={5}
-              rating={starRating}
-              starDimension="30px"
-              starHoverColor="gold"
-              starRatedColor="gold"
-              starSpacing="0"
-            />
+            <p>* Optional but helpful! *</p>
             <Input
               label="Your Name: "
               placeholder="your name (optional)"
@@ -243,6 +232,20 @@ export default function NewPractitioner() {
               type="text"
               value={reviewName}
             />
+            <div style={{ marginTop: "20px" }}>
+              <label>Rating: </label>
+              <StarRating
+                changeRating={(rating) => setStarRating(rating)}
+                isSelectable={true}
+                name="rating"
+                numberOfStars={5}
+                rating={starRating}
+                starDimension="30px"
+                starHoverColor="gold"
+                starRatedColor="gold"
+                starSpacing="0"
+              />
+            </div>
             <div style={{ marginTop: "20px" }}>
               <label>Review: </label>
               <textarea
