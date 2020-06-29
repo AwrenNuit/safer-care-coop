@@ -139,29 +139,35 @@ export default function NewPractitioner() {
   };
 
   return (
-    <div className="main-container">
+    <div
+      className="main-container"
+      style={{ margin: "0 auto", maxWidth: "630px" }}
+    >
       <form onSubmit={(e) => handleSubmit(e)}>
         <div className="form-content-container">
           <h1 style={{ textAlign: "center" }}>Add-a-Doc</h1>
           <div>
-            {/* set required prop for some to change color */}
+            {/* set requirements met prop to change color */}
             <Input
-              label="Practitioner Name (required)"
+              label="Practitioner Name"
               placeholder="name"
+              required={true}
               setValue={setName}
               type="text"
               value={name}
             />
             <Input
-              label="Employer (required)"
+              label="Employer"
               placeholder="employer name"
+              required={true}
               setValue={setEmployer}
               type="text"
               value={employer}
             />
             <Input
-              label="Phone Number (required)"
+              label="Phone Number"
               placeholder="xxx-xxx-xxxx"
+              required={true}
               setValue={setPhoneNumber}
               type="text"
               value={phoneNumber}

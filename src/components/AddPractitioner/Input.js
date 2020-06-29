@@ -5,15 +5,17 @@ export default function Input(props) {
     <>
       {props.type === "text" ? (
         <div style={{ marginTop: "20px" }}>
-          <label>{props.label}</label>
-            <br />
-            <input
-              className="form-input"
-              onChange={(e) => props.setValue(e.target.value)}
-              placeholder={props.placeholder}
-              type={props.type}
-              value={props.value}
-            />
+          <label>
+            {props.required ? `${props.label} (required)` : props.label}
+          </label>
+          <br />
+          <input
+            className="form-input"
+            onChange={(e) => props.setValue(e.target.value)}
+            placeholder={props.placeholder}
+            type={props.type}
+            value={props.value}
+          />
         </div>
       ) : (
         <label>
