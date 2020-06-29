@@ -31,7 +31,7 @@ button {
   color: #4f71bb;
 }
 
-.checkbox-container {
+.checkbox-container, .radio-container {
   cursor: pointer;
   display: block;
   font-size: 1.3rem;
@@ -40,7 +40,7 @@ button {
   position: relative;
 }
 
-.checkbox {
+.checkbox, .radio {
   height: 0;
   opacity: 0;
   position: absolute;
@@ -52,15 +52,15 @@ button {
   background-color: #ccc;
 }
 
-.checkbox:checked ~ .checkbox-check {
+.checkbox:checked ~ .checkbox-check, .radio:checked ~ .radio-active {
   background-color: #c929c9;
 }
 
-.checkbox:checked ~ .checkbox-check::after {
+.checkbox:checked ~ .checkbox-check::after, .radio:checked ~ .radio-active::after {
   display: block;
 }
 
-.checkbox-check {
+.checkbox-check, .radio-active {
   height: 25px;
   left: 0;
   position: absolute;
@@ -79,4 +79,24 @@ button {
   top: 5px;
   transform: rotate(45deg);
   width: 5px;
+}
+
+.radio ~ .radio-active {
+  background-color: #ccc;
+}
+
+.radio-active {
+  border-radius: 50%;
+}
+
+.radio-active::after {
+  background: #fff;
+  border-radius: 50%;
+  content: "";
+  display: none;
+  height: 8px;
+  left: 9px;
+  position: absolute;
+  top: 9px;
+	width: 8px;
 }
