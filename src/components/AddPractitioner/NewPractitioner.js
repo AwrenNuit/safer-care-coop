@@ -190,7 +190,9 @@ export default function NewPractitioner() {
 
           <div style={{ marginTop: "20px" }}>
             <h2>Tags</h2>
-            <p>Select One (required)</p>
+            <p style={{ fontWeight: "bold", margin: "20px 0 10px 0" }}>
+              Select One (required)
+            </p>
             <Input
               handleChange={handleTagChange}
               label="Physician"
@@ -203,7 +205,9 @@ export default function NewPractitioner() {
               name="doc-type"
               type="radio"
             />
-            <p>Select Any (optional)</p>
+            <p style={{ fontWeight: "bold", marginBottom: "10px" }}>
+              Select Any (optional)
+            </p>
             <Input handleChange={handleTagChange} label="POC" type="checkbox" />
             <Input
               handleChange={handleTagChange}
@@ -224,7 +228,7 @@ export default function NewPractitioner() {
 
           <div style={{ marginTop: "20px" }}>
             <h2>Your Rating & Review</h2>
-            <p>* Optional but helpful! *</p>
+            <p>** Optional but helpful! **</p>
             <Input
               label="Your Name: "
               placeholder="your name (optional)"
@@ -249,10 +253,10 @@ export default function NewPractitioner() {
             <div style={{ marginTop: "20px" }}>
               <label>Review: </label>
               <textarea
+                className="form-textarea"
                 onChange={(e) => setReview(e.target.value)}
                 placeholder="your review"
                 rows="6"
-                style={{ width: "100%" }}
                 value={review}
               ></textarea>
             </div>
