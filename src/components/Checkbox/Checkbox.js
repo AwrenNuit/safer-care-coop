@@ -31,7 +31,7 @@ export default function Checkbox(props) {
           onClick={handleClick}
           type="checkbox"
         />
-        <span class="checkbox-check"></span>
+        <span className="checkbox-check"></span>
       </label>
     </div>
   );
