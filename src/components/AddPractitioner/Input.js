@@ -1,14 +1,22 @@
 import React from "react";
 
 export default function Input(props) {
-  const setStyle = () => {
+  const setStyle = (type) => {
     if (!props.required) {
       return;
     } else {
       if (props.label === "Phone Number" && props.value.length !== 12) {
-        return { color: "red" };
+        if (type === "label") {
+          return { color: "red" };
+        } else {
+          return { borderColor: "red" };
+        }
       } else if (props.label !== "Phone Number" && props.value.length === 0) {
-        return { color: "red" };
+        if (type === "label") {
+          return { color: "red" };
+        } else {
+          return { borderColor: "red" };
+        }
       } else {
         return;
       }
@@ -18,7 +26,7 @@ export default function Input(props) {
     <>
       {props.type === "text" ? (
         <div style={{ marginTop: "20px" }}>
-          <label style={setStyle()}>
+          <label style={setStyle('label')}>
             {props.required ? `${props.label} (required)` : props.label}
           </label>
           <br />
@@ -26,6 +34,7 @@ export default function Input(props) {
             className="form-input"
             onChange={(e) => props.setValue(e.target.value)}
             placeholder={props.placeholder}
+            style={setStyle('input')}
             type={props.type}
             value={props.value}
           />
