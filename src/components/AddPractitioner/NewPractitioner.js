@@ -4,9 +4,11 @@ import { Context } from "../App/App";
 import StarRating from "react-star-ratings";
 import "./NewPractitioner.css";
 import Input from "./Input";
+import { useHistory } from "react-router-dom";
 
 export default function NewPractitioner() {
   const { state, dispatch } = useContext(Context);
+  const history = useHistory();
   const [bio, setBio] = useState("");
   const [employer, setEmployer] = useState("");
   const [image, setImage] = useState("");
@@ -29,12 +31,16 @@ export default function NewPractitioner() {
         if (tags.includes("Physician") || tags.includes("Therapist")) {
           if (starRating && review) {
             postWithRatingAndReview();
+            thankAndRedirect();
           } else if (starRating) {
             postWithRating();
+            thankAndRedirect();
           } else if (review) {
             postWithReview();
+            thankAndRedirect();
           } else {
             PostWithNoReviewOrRating();
+            thankAndRedirect();
           }
         } else {
           alert(`Please select 'Physician' or 'Therapist' tag.`);
@@ -136,6 +142,11 @@ export default function NewPractitioner() {
       tags: tags,
     });
     postReview();
+  };
+
+  const thankAndRedirect = () => {
+    dispatch({ type: `SHOW_TOAST` });
+    history.push("/");
   };
 
   return (
