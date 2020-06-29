@@ -68,7 +68,11 @@ export default function SelectedPractitioner() {
         ratings={practitioner.ratings}
         numRatings={practitioner.numRatings}
       />
-      <Reviews reviews={practitioner.reviews} />
+      {practitioner.reviews ? (
+        <Reviews reviews={practitioner.reviews} />
+      ) : (
+        <h2 style={{ marginTop: "20px" }}>No reviews yet.</h2>
+      )}
     </div>
   );
 }
