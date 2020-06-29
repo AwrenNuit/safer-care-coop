@@ -4,6 +4,10 @@
   /* font-size: 16px; */
 }
 
+body {
+  font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+}
+
 button {
   border-radius: 10px;
   cursor: pointer;
@@ -36,7 +40,7 @@ button {
   display: block;
   font-size: 1.3rem;
   margin-bottom: 20px;
-  padding: 4px 0 0 35px;
+  padding-left: 35px;
   position: relative;
 }
 
