@@ -18,15 +18,16 @@ export default function Input(props) {
           />
         </div>
       ) : (
-        <label>
-          <br />
+        <label className={props.type === 'checkbox' ? 'checkbox-container' : 'radio-container'}>
+          {props.label}
           <input
+            className={props.type === 'checkbox' ? 'checkbox' : 'radio'}
             name={props.name || null}
             onChange={(e) => props.handleChange(e.target.checked, props.label)}
             type={props.type}
             value={props.value}
           />
-          {props.label}
+          <span className={props.type === 'checkbox' ? 'checkbox-check' : 'radio-active'}></span>
         </label>
       )}
     </>

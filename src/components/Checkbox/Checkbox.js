@@ -1,6 +1,5 @@
 import React, { useEffect, useState, useContext } from "react";
 import { Context } from "../App/App";
-import './Checkbox.css';
 
 export default function Checkbox(props) {
   const { state, dispatch } = useContext(Context);
