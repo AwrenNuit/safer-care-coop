@@ -3,7 +3,7 @@ import { useHistory } from "react-router-dom";
 import StarRating from "react-star-ratings";
 import { db } from "../../firebase";
 import { Context } from "../App/App";
-import './NewReview.css';
+import "./NewReview.css";
 
 export default function NewReview(props) {
   const { state, dispatch } = useContext(Context);
@@ -55,52 +55,53 @@ export default function NewReview(props) {
   };
 
   return (
-    <>
-      <form onSubmit={handleSubmit}>
-        <div
-          style={{
-            border: "3px solid black",
-            marginTop: "2rem",
-            padding: "1rem",
-          }}
-        >
-          <div style={{ float: "right" }}>
-            <StarRating
-              changeRating={(rating) => setStarRating(rating)}
-              isSelectable={true}
-              name="rating"
-              numberOfStars={5}
-              rating={starRating}
-              starDimension="30px"
-              starHoverColor="gold"
-              starRatedColor="gold"
-              starSpacing="0"
-            />
-          </div>
-          <input
-            className="review-input"
-            onChange={(e) => setName(e.target.value)}
-            placeholder="name (optional)"
-            type="text"
-            value={name}
+    <form onSubmit={handleSubmit}>
+      <div
+        style={{
+          border: "3px solid black",
+          margin: "2rem auto 0 auto",
+          maxWidth: "630px",
+          padding: "1rem",
+        }}
+      >
+        <h2 style={{ marginBottom: "20px", textAlign: "center" }}>
+          Leave a Review
+        </h2>
+        <div style={{ float: "right" }}>
+          <StarRating
+            changeRating={(rating) => setStarRating(rating)}
+            isSelectable={true}
+            name="rating"
+            numberOfStars={5}
+            rating={starRating}
+            starDimension="30px"
+            starHoverColor="gold"
+            starRatedColor="gold"
+            starSpacing="0"
           />
-          <p>{date}</p>
-          <br />
-          <textarea
-            className="form-textarea"
-            onChange={(e) => setReview(e.target.value)}
-            placeholder="leave review"
-            rows="6"
-            value={review}
-          ></textarea>
-          <button
-            style={{ display: "block", marginTop: "1rem", width: "100%" }}
-            type="submit"
-          >
-            Submit
-          </button>
         </div>
-      </form>
-    </>
+        <input
+          className="review-input"
+          onChange={(e) => setName(e.target.value)}
+          placeholder="name (optional)"
+          type="text"
+          value={name}
+        />
+        <br />
+        <textarea
+          className="form-textarea"
+          onChange={(e) => setReview(e.target.value)}
+          placeholder="leave review"
+          rows="6"
+          value={review}
+        ></textarea>
+        <button
+          style={{ display: "block", marginTop: "1rem", width: "100%" }}
+          type="submit"
+        >
+          Submit
+        </button>
+      </div>
+    </form>
   );
 }

@@ -17,6 +17,8 @@ button {
 }
 
 .main-container {
+  margin: 0 auto;
+  max-width: 630px;
   padding: 3rem;
 }
 
@@ -106,6 +108,8 @@ button {
 }
 
 .form-textarea {
+  border: 1px solid #a1a1a1;
+  border-radius: 10px;
   font-size: 1.3rem;
   padding: 10px;
   width: calc(100% - 20px);
