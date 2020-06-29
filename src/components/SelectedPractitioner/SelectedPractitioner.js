@@ -62,7 +62,7 @@ export default function SelectedPractitioner() {
     }
     dispatch({ type: `SET_SELECTED_TAG`, payload: selectedTag });
     dispatch({ type: `SET_SEARCH_RESULTS`, payload: matches });
-    history.push('/results');
+    history.push("/results");
   };
 
   return (
@@ -72,7 +72,9 @@ export default function SelectedPractitioner() {
         <img id="selected-img" src={practitioner.image} alt="" />
         <div>
           <h1>{practitioner.name}</h1>
-          <p>{practitioner.employer}</p>
+          <p>
+            {practitioner.employer} | {practitioner.phone}
+          </p>
           <StarRating
             name="rating"
             numberOfStars={5}
