@@ -67,11 +67,18 @@ export default function SelectedPractitioner() {
 
   return (
     <div className="main-container">
-      <p onClick={() => history.goBack()}>&#8656; Return to Search Results</p>
+      <p
+        onClick={() => history.goBack()}
+        style={{ bottom: "20px", position: "relative" }}
+      >
+        &#8656; Return to Search Results
+      </p>
       <div id="selected-grid">
         <img
           id="selected-img"
-          src={practitioner.image ? practitioner.image : "/images/no-avatar.png"}
+          src={
+            practitioner.image ? practitioner.image : "/images/no-avatar.png"
+          }
           alt={`a professional photo of ${practitioner.name}`}
         />
         <div>
