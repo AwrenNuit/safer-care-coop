@@ -38,7 +38,7 @@ export default function Home() {
       </p>
       <br />
       <p>
-        Start by using the searchbar up top. If you've seen an excellent practitioner feel
+        Start by using the search area up top. If you've seen an excellent practitioner feel
         free to add them to the list <Link style={{color: "#c929c9",cursor: "pointer"}} to="/add-a-doc">HERE</Link>.
       </p>
       <ToastContainer
