@@ -69,7 +69,11 @@ export default function SelectedPractitioner() {
     <div className="main-container">
       <p onClick={() => history.goBack()}>&#8656; Return to Search Results</p>
       <div id="selected-grid">
-        <img id="selected-img" src={practitioner.image} alt="" />
+        <img
+          id="selected-img"
+          src={practitioner.image ? practitioner.image : "/images/no-avatar.png"}
+          alt={`a professional photo of ${practitioner.name}`}
+        />
         <div>
           <h1>{practitioner.name}</h1>
           <p>
@@ -84,7 +88,11 @@ export default function SelectedPractitioner() {
             starSpacing="0"
           />
           {zeroRatings ? <p>no ratings yet</p> : ""}
-          <p>{practitioner.bio}</p>
+          {practitioner.bio ? (
+            <p>{practitioner.bio}</p>
+          ) : (
+            <p>Bio coming soon...</p>
+          )}
           <div
             style={{ display: "inline-block", float: "left", height: "60px" }}
           ></div>
