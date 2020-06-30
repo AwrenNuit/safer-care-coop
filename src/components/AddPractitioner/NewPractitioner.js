@@ -219,7 +219,7 @@ export default function NewPractitioner() {
             <p style={{ fontWeight: "bold", marginBottom: "10px" }}>
               Select Any (optional)
             </p>
-            <Input handleChange={handleTagChange} label="POC" type="checkbox" />
+            <Input handleChange={handleTagChange} label="BIPOC" type="checkbox" />
             <Input
               handleChange={handleTagChange}
               label="Transgender"

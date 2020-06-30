@@ -11,7 +11,7 @@ export default function Searchbar() {
   const [checkboxes, setCheckboxes] = useState([
     "Physician",
     "Therapist",
-    "POC",
+    "BIPOC",
     "Transgender",
     "Women",
     "Queer",
