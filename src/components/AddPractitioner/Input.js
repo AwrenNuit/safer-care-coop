@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 
 export default function Input(props) {
+  const [focus, setFocus] = useState(true);
+  
   const setStyle = (type) => {
-    if (!props.required) {
+    if (!props.required || focus) {
       return;
     } else {
       if (props.label === "Phone Number" && props.value.length !== 12) {
@@ -33,7 +35,9 @@ export default function Input(props) {
           <br />
           <input
             className="form-input"
+            onBlur={() => setFocus(false)}
             onChange={(e) => props.setValue(e.target.value)}
+            onFocus={() => setFocus(true)}
             placeholder={props.placeholder}
             style={setStyle('input')}
             type={props.type}
