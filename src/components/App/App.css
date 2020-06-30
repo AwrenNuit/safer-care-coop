@@ -9,6 +9,7 @@ body {
 }
 
 button {
+  background: linear-gradient(to right, #c929c9, #fd70fd, #fdaefd);
   border-radius: 10px;
   cursor: pointer;
   font-size: 1.3rem;
