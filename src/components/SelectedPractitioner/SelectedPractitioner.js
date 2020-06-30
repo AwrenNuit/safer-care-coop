@@ -68,8 +68,8 @@ export default function SelectedPractitioner() {
   return (
     <div className="main-container">
       <p
+        className="back-btn"
         onClick={() => history.goBack()}
-        style={{ bottom: "20px", position: "relative" }}
       >
         &#8656; Return to Search Results
       </p>
@@ -79,7 +79,6 @@ export default function SelectedPractitioner() {
           src={
             practitioner.image ? practitioner.image : "/images/no-avatar.png"
           }
-          alt={`a professional photo of ${practitioner.name}`}
         />
         <div>
           <h1>{practitioner.name}</h1>

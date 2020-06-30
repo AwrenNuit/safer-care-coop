@@ -68,7 +68,11 @@ export default function Results() {
     <div className="main-container">
       <h1>Practitioners in Your Area</h1>
       <p style={{ margin: "10px 0" }}>
-        Don't see your doctor? Add them <Link to="/add-a-doc">HERE</Link>.
+        Don't see your doctor? Add them{" "}
+        <Link style={{ color: "#c929c9", cursor: "pointer" }} to="/add-a-doc">
+          HERE
+        </Link>
+        .
       </p>
       <div>
         {searchResults.map((item, i) => (
@@ -77,7 +81,6 @@ export default function Results() {
               <img
                 className="results-img"
                 src={item.image ? item.image : "images/no-avatar.png"}
-                alt={`a professional photo of ${item.name}`}
               />
             </div>
             <div>

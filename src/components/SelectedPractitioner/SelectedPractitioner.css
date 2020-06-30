@@ -8,3 +8,11 @@
   height: 250px;
   margin-right: 1rem;
 }
+
+.back-btn {
+  bottom: 20px;
+  color: #c929c9;
+  cursor: pointer;
+  position: relative;
+  text-decoration: underline;
+}
