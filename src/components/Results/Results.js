@@ -76,8 +76,8 @@ export default function Results() {
             <div onClick={() => selectDoctor(item)}>
               <img
                 className="results-img"
-                src={item.image}
-                alt="img from database"
+                src={item.image ? item.image : "images/no-avatar.png"}
+                alt={`a professional photo of ${item.name}`}
               />
             </div>
             <div>
@@ -101,7 +101,7 @@ export default function Results() {
                 starSpacing="0"
               />
               {!item.ratings || !item.numRatings ? <p>no ratings yet</p> : ""}
-              <p>{item.bio}</p>
+              {item.bio ? <p>{item.bio}</p> : <p>Bio coming soon...</p>}
               <div
                 style={{
                   display: "inline-block",
