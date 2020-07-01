@@ -5,6 +5,7 @@
 #header {
   background-color: #6b99fd;
   background: linear-gradient(to right, #c929c9, #ffde70, #ffde70, #c929c9);
+  box-shadow: 0 0 5px 5px #666;
   cursor: pointer;
   height: 70px;
   line-height: 70px;

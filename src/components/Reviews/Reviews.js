@@ -10,7 +10,7 @@ export default function Reviews(props) {
             <div
               style={{
                 border: "3px solid black",
-                marginTop: "1.5rem",
+                margin: "1.5rem 0",
                 padding: "1rem",
               }}
             >

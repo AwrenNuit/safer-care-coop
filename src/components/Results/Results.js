@@ -77,19 +77,27 @@ export default function Results() {
       <div>
         {searchResults.map((item, i) => (
           <div key={i} id="results-grid">
-            <div onClick={() => selectDoctor(item)}>
+            <div className="results-grid-img" onClick={() => selectDoctor(item)}>
               <img
                 className="results-img"
                 src={item.image ? item.image : "images/no-avatar.png"}
               />
             </div>
-            <div>
+            <div className="results-grid-name">
               <h2 className="results-name" onClick={() => selectDoctor(item)}>
                 {item.name}
               </h2>
-              <p>
+            </div>
+            <div className="results-grid-employer">
+              <p className="results-fs-bio">
                 {item.employer} | {item.phone}
               </p>
+              <div className="results-ms-bio">
+                <p>{item.employer}</p>
+                <p>{item.phone}</p>
+              </div>
+            </div>
+            <div className="results-grid-rating">
               <StarRating
                 name="rating"
                 numberOfStars={5}
@@ -104,14 +112,18 @@ export default function Results() {
                 starSpacing="0"
               />
               {!item.ratings || !item.numRatings ? <p>no ratings yet</p> : ""}
+            </div>
+            <div className="results-grid-bio">
               {item.bio ? <p>{item.bio}</p> : <p>Bio coming soon...</p>}
-              <div
-                style={{
-                  display: "inline-block",
-                  float: "left",
-                  height: "60px",
-                }}
-              ></div>
+            </div>
+            <div
+              style={{
+                display: "inline-block",
+                float: "left",
+                height: "60px",
+              }}
+            ></div>
+            <div className="results-grid-tags">
               <p className="tags">
                 Tags:{" "}
                 {item.tags ? (

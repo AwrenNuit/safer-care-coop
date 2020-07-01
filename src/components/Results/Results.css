@@ -1,16 +1,38 @@
 #results-grid {
   border: 2px solid black;
   display: grid;
-  grid-template-columns: 1fr 3fr;
+  grid-template-areas: 'image name' 'image employer' 'image rating' 'image bio' 'image tags';
   margin-bottom: 2rem;
   padding: 1rem;
   position: relative;
+}
+
+.results-grid-img {
+  grid-area: image;
+  width: 150px;
+}
+
+.results-grid-name { grid-area: name; }
+
+.results-grid-employer { grid-area: employer; }
+
+.results-grid-rating { grid-area: rating; }
+
+.results-grid-bio {
+  grid-area: bio;
+  width: 400px;
+}
+
+.results-grid-tags {
+  grid-area: tags;
 }
 
 .results-img {
   cursor: pointer;
   height: 150px;
   margin-right: 1rem;
+  object-fit: cover;
+  width: 150px;
 }
 
 .results-name {
@@ -21,4 +43,37 @@
 
 .results-name:hover {
   text-decoration: underline;
+}
+
+.results-ms-bio {
+  display: none;
+}
+
+@media(max-width: 710px) {
+  #results-grid {
+    border: 2px solid black;
+    grid-template-areas: 'image name' 'image employer' 'image rating' 'bio bio' 'tags tags';
+  }
+
+  .results-grid-name {
+    grid-area: name;
+    width: 200px;
+  }
+
+  .results-grid-bio {
+    grid-area: bio;
+    width: 360px;
+  }
+  
+  .results-img {
+    margin-right: 1rem;
+  }
+
+  .results-fs-bio {
+    display: none;
+  }
+
+  .results-ms-bio {
+    display: block;
+  }
 }
