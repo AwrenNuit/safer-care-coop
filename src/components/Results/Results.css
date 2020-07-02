@@ -1,30 +1,5 @@
-#results-grid {
-  border: 2px solid black;
-  display: grid;
-  grid-template-areas: 'image name' 'image employer' 'image rating' 'image bio' 'image tags';
-  margin-bottom: 2rem;
-  padding: 1rem;
-  position: relative;
-}
-
-.results-grid-img {
-  grid-area: image;
-  width: 150px;
-}
-
-.results-grid-name { grid-area: name; }
-
-.results-grid-employer { grid-area: employer; }
-
-.results-grid-rating { grid-area: rating; }
-
-.results-grid-bio {
-  grid-area: bio;
+#results-bio {
   width: 400px;
-}
-
-.results-grid-tags {
-  grid-area: tags;
 }
 
 .results-img {
@@ -45,58 +20,22 @@
   text-decoration: underline;
 }
 
-.results-ms-bio {
-  display: none;
-}
-
-@media(max-width: 710px) {
-  #results-grid {
-    border: 2px solid black;
-    grid-template-areas: 'image name' 'image employer' 'image rating' 'bio bio' 'tags tags';
-  }
-
-  .results-grid-name {
-    grid-area: name;
+@media (max-width: 710px) {
+  #results-name {
     width: 200px;
   }
 
-  .results-grid-bio {
-    grid-area: bio;
+  #results-bio {
     width: 360px;
-  }
-
-  .results-fs-bio {
-    display: none;
-  }
-
-  .results-ms-bio {
-    display: block;
   }
 }
 
-@media(max-width: 480px) {
-  #results-grid {
-    border: 2px solid black;
-    grid-template-areas: 'image' 'name' 'employer' 'rating' 'bio' 'tags';
-  }
-
-  .results-grid-img {
-    display: block;
-    margin: 0 auto;
-  }
-
-  .results-grid-name {
-    grid-area: name;
-    text-align: center;
+@media (max-width: 480px) {
+  #results-name {
     width: 100%;
   }
 
-  .results-grid-employer { text-align: center; }
-
-  .results-grid-rating { text-align: center; }
-
-  .results-grid-bio {
-    grid-area: bio;
+  #results-bio {
     width: 260px;
   }
 }

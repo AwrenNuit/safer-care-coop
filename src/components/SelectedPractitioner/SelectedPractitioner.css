@@ -1,12 +1,8 @@
-#selected-grid {
-  display: grid;
-  grid-template-columns: 1fr 3fr;
-  position: relative;
-}
-
 #selected-img {
   height: 250px;
   margin-right: 1rem;
+  object-fit: cover;
+  width: 250px;
 }
 
 .back-btn {
@@ -15,4 +11,26 @@
   cursor: pointer;
   position: relative;
   text-decoration: underline;
+}
+
+@media (max-width: 710px) {
+  #selected-img {
+    height: 200px;
+    width: 200px;
+  }
+
+  #selected-grid-img {
+    width: 200px;
+  }
+}
+
+@media (max-width: 480px) {
+  #selected-img {
+    height: 250px;
+    width: 250px;
+  }
+
+  #selected-grid-img {
+    width: 250px;
+  }
 }

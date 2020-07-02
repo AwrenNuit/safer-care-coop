@@ -67,24 +67,27 @@ export default function SelectedPractitioner() {
 
   return (
     <div className="main-container">
-      <p
-        className="back-btn"
-        onClick={() => history.goBack()}
-      >
+      <p className="back-btn" onClick={() => history.goBack()}>
         &#8656; Return to Search Results
       </p>
-      <div id="selected-grid">
-        <img
-          id="selected-img"
-          src={
-            practitioner.image ? practitioner.image : "/images/no-avatar.png"
-          }
-        />
-        <div>
+      <div className="grid">
+        <div className="grid-img" id="selected-grid-img">
+          <img
+            id="selected-img"
+            src={
+              practitioner.image ? practitioner.image : "/images/no-avatar.png"
+            }
+          />
+        </div>
+        <div className="grid-name">
           <h1>{practitioner.name}</h1>
+        </div>
+        <div className="grid-employer">
           <p>
             {practitioner.employer} | {practitioner.phone}
           </p>
+        </div>
+        <div className="grid-rating">
           <StarRating
             name="rating"
             numberOfStars={5}
@@ -94,14 +97,18 @@ export default function SelectedPractitioner() {
             starSpacing="0"
           />
           {zeroRatings ? <p>no ratings yet</p> : ""}
+        </div>
+        <div className="grid-bio">
           {practitioner.bio ? (
             <p>{practitioner.bio}</p>
           ) : (
             <p>Bio coming soon...</p>
           )}
-          <div
-            style={{ display: "inline-block", float: "left", height: "60px" }}
-          ></div>
+        </div>
+        <div
+          style={{ display: "inline-block", float: "left", height: "80px" }}
+        ></div>
+        <div className="grid-tags">
           {practitioner.tags ? (
             <p className="tags">
               Tags:{" "}

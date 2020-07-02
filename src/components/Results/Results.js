@@ -76,28 +76,36 @@ export default function Results() {
       </p>
       <div>
         {searchResults.map((item, i) => (
-          <div key={i} id="results-grid">
-            <div className="results-grid-img" onClick={() => selectDoctor(item)}>
+          <div
+            key={i}
+            className="grid"
+            style={{ border: "2px solid black", padding: "1rem" }}
+          >
+            <div
+              className="grid-img"
+              onClick={() => selectDoctor(item)}
+              style={{ width: "150px" }}
+            >
               <img
                 className="results-img"
                 src={item.image ? item.image : "images/no-avatar.png"}
               />
             </div>
-            <div className="results-grid-name">
+            <div className="grid-name" id="results-name">
               <h2 className="results-name" onClick={() => selectDoctor(item)}>
                 {item.name}
               </h2>
             </div>
-            <div className="results-grid-employer">
-              <p className="results-fs-bio">
+            <div className="grid-employer">
+              <p className="fs-phone">
                 {item.employer} | {item.phone}
               </p>
-              <div className="results-ms-bio">
+              <div className="ms-phone">
                 <p>{item.employer}</p>
                 <p>{item.phone}</p>
               </div>
             </div>
-            <div className="results-grid-rating">
+            <div className="grid-rating">
               <StarRating
                 name="rating"
                 numberOfStars={5}
@@ -113,7 +121,7 @@ export default function Results() {
               />
               {!item.ratings || !item.numRatings ? <p>no ratings yet</p> : ""}
             </div>
-            <div className="results-grid-bio">
+            <div className="grid-bio" id="results-bio">
               {item.bio ? <p>{item.bio}</p> : <p>Bio coming soon...</p>}
             </div>
             <div
@@ -123,7 +131,7 @@ export default function Results() {
                 height: "60px",
               }}
             ></div>
-            <div className="results-grid-tags">
+            <div className="grid-tags">
               <p className="tags">
                 Tags:{" "}
                 {item.tags ? (
