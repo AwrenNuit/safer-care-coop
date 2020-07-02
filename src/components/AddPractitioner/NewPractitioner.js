@@ -190,13 +190,16 @@ export default function NewPractitioner() {
               type="text"
               value={image}
             />
-            <Input
-              label="Background & Services"
-              placeholder="what this person does"
-              setValue={setBio}
-              type="text"
-              value={bio}
-            />
+            <div style={{ marginTop: "20px" }}>
+              <label>Background & Services: </label>
+              <textarea
+                className="form-textarea"
+                onChange={(e) => setBio(e.target.value)}
+                placeholder="what this person does"
+                rows="6"
+                value={bio}
+              ></textarea>
+            </div>
           </div>
 
           <div style={{ marginTop: "20px" }}>
