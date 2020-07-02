@@ -14,12 +14,17 @@
   width: 90%;
 }
 
-#filter-grid {
+.filter-grid {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  margin: 0 auto;
+  margin: 1rem auto;
   text-align: left;
   width: 90%;
+}
+
+.filter-grid:first-child {
+  border-bottom: 1px solid #ccc;
+  height: 50px;
 }
 
 #search-btn {
@@ -32,10 +37,18 @@
   #search-container {
     width: 364px;
   }
+
+  .filter-grid {
+    grid-template-columns: 1fr 1fr;
+  }
 }
 
 @media(max-width: 480px) {
   #search-container {
     width: 264px;
+  }
+
+  .search-checkbox {
+    font-size: 1rem;
   }
 }

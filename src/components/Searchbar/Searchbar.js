@@ -8,13 +8,17 @@ export default function Searchbar() {
   const history = useHistory();
   const { state, dispatch } = useContext(Context);
   const [selectedFilters, setSelectedFilters] = useState([]);
-  const [checkboxes, setCheckboxes] = useState([
+  const [practitionerCheckboxes, setPractitionerCheckboxes] = useState([
     "Physician",
     "Therapist",
+  ]);
+  const [groupCheckboxes, setGroupCheckboxes] = useState([
+    "Disabled",
     "BIPOC",
+    "Fat",
+    "Queer",
     "Transgender",
     "Women",
-    "Queer",
   ]);
 
   useEffect(() => {
@@ -81,8 +85,13 @@ export default function Searchbar() {
       {/* searchbar will only be available once zipcode logic is implemented */}
       {/* for now will just search minneapolis area */}
       {/* <input id="searchbar" type="text" placeholder="enter zipcode or city" /> */}
-      <div id="filter-grid">
-        {checkboxes.map((label, i) => (
+      <div className="filter-grid">
+        {practitionerCheckboxes.map((label, i) => (
+          <Checkbox key={i} label={label} onChange={handleFilterChange} />
+        ))}
+      </div>
+      <div className="filter-grid">
+        {groupCheckboxes.map((label, i) => (
           <Checkbox key={i} label={label} onChange={handleFilterChange} />
         ))}
       </div>

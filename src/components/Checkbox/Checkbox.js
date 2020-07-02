@@ -22,7 +22,7 @@ export default function Checkbox(props) {
 
   return (
     <div style={{ display: "inline-block", margin: "0 1rem 0.5rem 0" }}>
-      <label className="checkbox-container">
+      <label className="checkbox-container search-checkbox">
         {props.label}
         <input
           checked={isChecked}

@@ -89,6 +89,7 @@ export default function Results() {
               <img
                 className="results-img"
                 src={item.image ? item.image : "images/no-avatar.png"}
+                alt=""
               />
             </div>
             <div className="grid-name" id="results-name">

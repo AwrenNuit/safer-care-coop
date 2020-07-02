@@ -77,6 +77,7 @@ export default function SelectedPractitioner() {
             src={
               practitioner.image ? practitioner.image : "/images/no-avatar.png"
             }
+            alt=""
           />
         </div>
         <div className="grid-name">
