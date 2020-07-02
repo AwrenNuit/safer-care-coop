@@ -32,14 +32,22 @@ export default function Home() {
         significant discrimination from healthcare workers. This results in
         worse overall healthcare, less visits to the doctor, and sometimes
         traumatic experiences or death. The system as it exists simply will not
-        do. The goal of [Safer Healthcare] is to make it easier for people who
-        hold oppressed or marginalized identities to find a healthcare
-        practitioner that will provide better care.
+        do.
       </p>
       <br />
       <p>
-        Start by using the search area up top. If you've seen an excellent practitioner feel
-        free to add them to the list <Link style={{color: "#c929c9",cursor: "pointer"}} to="/add-a-doc">HERE</Link>.
+        The goal of [Safer Healthcare] is to make it easier for people who hold
+        these identities to find a healthcare practitioner in the Minneapolis
+        area who will provide better care.
+      </p>
+      <br />
+      <p>
+        Start by using the search area up top. If you've seen an excellent
+        practitioner feel free to add them to the list{" "}
+        <Link style={{ color: "#c929c9", cursor: "pointer" }} to="/add-a-doc">
+          HERE
+        </Link>
+        .
       </p>
       <ToastContainer
         position="bottom-center"

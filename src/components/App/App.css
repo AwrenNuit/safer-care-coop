@@ -19,7 +19,7 @@ button {
 }
 
 .main-container {
-  margin: 0 auto;
+  margin: 0 auto 20px auto;
   width: 630px;
 }
 

@@ -27,3 +27,15 @@
   margin: 1rem auto;
   width: 90%;
 }
+
+@media(max-width: 710px) {
+  #search-container {
+    width: 364px;
+  }
+}
+
+@media(max-width: 480px) {
+  #search-container {
+    width: 264px;
+  }
+}
