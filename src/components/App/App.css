@@ -125,3 +125,13 @@ button {
     width: 400px;
   }
 }
+
+@media(max-width: 480px) {
+  h1 {
+    font-size: 1.4rem;
+  }
+
+  .main-container {
+    width: 300px;
+  }
+}

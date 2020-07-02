@@ -64,10 +64,6 @@
     grid-area: bio;
     width: 360px;
   }
-  
-  .results-img {
-    margin-right: 1rem;
-  }
 
   .results-fs-bio {
     display: none;
@@ -75,5 +71,32 @@
 
   .results-ms-bio {
     display: block;
+  }
+}
+
+@media(max-width: 480px) {
+  #results-grid {
+    border: 2px solid black;
+    grid-template-areas: 'image' 'name' 'employer' 'rating' 'bio' 'tags';
+  }
+
+  .results-grid-img {
+    display: block;
+    margin: 0 auto;
+  }
+
+  .results-grid-name {
+    grid-area: name;
+    text-align: center;
+    width: 100%;
+  }
+
+  .results-grid-employer { text-align: center; }
+
+  .results-grid-rating { text-align: center; }
+
+  .results-grid-bio {
+    grid-area: bio;
+    width: 260px;
   }
 }
