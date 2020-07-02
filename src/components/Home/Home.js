@@ -4,9 +4,16 @@ import "react-toastify/dist/ReactToastify.css";
 import "./Home.css";
 import { Context } from "../App/App";
 import { Link } from "react-router-dom";
+import { db } from "../../firebase";
 
 export default function Home() {
   const { state, dispatch } = useContext(Context);
+
+  useEffect(() => {
+    db.ref().once("value", (snapshot) => {
+      dispatch({ type: `SET_PRACTITIONERS`, payload: snapshot.val() });
+    });
+  }, []);
 
   useEffect(() => {
     if (state.toast) {
@@ -22,6 +29,7 @@ export default function Home() {
       setTimeout(() => dispatch({ type: `CLEAR_TOAST` }), 5000);
     }
   }, []);
+
   return (
     <div className="main-container">
       <h1 style={{ marginBottom: "1rem", textAlign: "center" }}>
