@@ -13,8 +13,8 @@ export default function Searchbar() {
     "Therapist",
   ]);
   const [groupCheckboxes, setGroupCheckboxes] = useState([
-    "Disabled",
     "BIPOC",
+    "Disabled",
     "Fat",
     "Queer",
     "Transgender",
