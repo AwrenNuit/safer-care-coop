@@ -25,7 +25,6 @@ export default function NewPractitioner() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("state:", Object.keys(state.allPractitioners));
     if (!Object.keys(state.allPractitioners).includes(name)) {
       if (name && employer && phoneNumber) {
         if (tags.includes("Physician") || tags.includes("Therapist")) {
@@ -48,6 +47,8 @@ export default function NewPractitioner() {
       } else {
         alert(`Please enter practitioner Name, Employer, and Phone Number.`);
       }
+    } else {
+      alert(`That practitioner is already in the system.`);
     }
   };
 
@@ -222,7 +223,11 @@ export default function NewPractitioner() {
             <p style={{ fontWeight: "bold", marginBottom: "10px" }}>
               Select Any (optional)
             </p>
-            <Input handleChange={handleTagChange} label="BIPOC" type="checkbox" />
+            <Input
+              handleChange={handleTagChange}
+              label="BIPOC"
+              type="checkbox"
+            />
             <Input
               handleChange={handleTagChange}
               label="Transgender"
