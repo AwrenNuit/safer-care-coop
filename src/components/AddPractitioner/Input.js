@@ -1,13 +1,26 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export default function Input(props) {
+  const [check, setCheck] = useState(/^[0-9]{3}-[0-9]{3}-[0-9]{4}$/);
   const [focus, setFocus] = useState(true);
-  
+
+  useEffect(() => {
+    if(focus) {
+      return;
+    } else {
+      if(props.label === "Phone Number" && !check.test(props.value)) {
+        showToast();
+      }
+    }
+  }, [focus]);
+
   const setStyle = (type) => {
     if (!props.required || focus) {
       return;
     } else {
-      if (props.label === "Phone Number" && props.value.length !== 12) {
+      if (props.label === "Phone Number" && !check.test(props.value)) {
         if (type === "label") {
           return { color: "red" };
         } else {
@@ -24,12 +37,24 @@ export default function Input(props) {
       }
     }
   };
-  
+
+  const showToast = () => {
+    toast("🛑 Use format xxx-xxx-xxxx", {
+      position: "bottom-center",
+      autoClose: 3000,
+      hideProgressBar: true,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    });
+  }
+
   return (
     <>
       {props.type === "text" ? (
         <div style={{ marginTop: "20px" }}>
-          <label style={setStyle('label')}>
+          <label style={setStyle("label")}>
             {props.required ? `${props.label} (required)` : props.label}
           </label>
           <br />
@@ -39,9 +64,20 @@ export default function Input(props) {
             onChange={(e) => props.setValue(e.target.value)}
             onFocus={() => setFocus(true)}
             placeholder={props.placeholder}
-            style={setStyle('input')}
+            style={setStyle("input")}
             type={props.type}
             value={props.value}
+          />
+          <ToastContainer
+            position="bottom-center"
+            autoClose={5000}
+            hideProgressBar
+            newestOnTop={false}
+            closeOnClick
+            rtl={false}
+            pauseOnFocusLoss
+            draggable
+            pauseOnHover
           />
         </div>
       ) : (
