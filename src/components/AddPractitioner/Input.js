@@ -7,10 +7,10 @@ export default function Input(props) {
   const [focus, setFocus] = useState(true);
 
   useEffect(() => {
-    if(focus) {
+    if (focus) {
       return;
     } else {
-      if(props.label === "Phone Number" && !check.test(props.value)) {
+      if (props.label === "Phone Number" && !check.test(props.value)) {
         showToast();
       }
     }
@@ -48,7 +48,7 @@ export default function Input(props) {
       draggable: true,
       progress: undefined,
     });
-  }
+  };
 
   return (
     <>
