@@ -259,17 +259,27 @@ export default function NewPractitioner() {
             />
             <Input
               handleChange={handleTagChange}
+              label="Disabled"
+              type="checkbox"
+            />
+            <Input
+              handleChange={handleTagChange}
+              label="Fat"
+              type="checkbox"
+            />
+            <Input
+              handleChange={handleTagChange}
+              label="Queer"
+              type="checkbox"
+            />
+            <Input
+              handleChange={handleTagChange}
               label="Transgender"
               type="checkbox"
             />
             <Input
               handleChange={handleTagChange}
               label="Women"
-              type="checkbox"
-            />
-            <Input
-              handleChange={handleTagChange}
-              label="Queer"
               type="checkbox"
             />
           </div>

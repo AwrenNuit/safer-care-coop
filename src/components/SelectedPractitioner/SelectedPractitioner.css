@@ -5,6 +5,18 @@
   width: 250px;
 }
 
+#add-tag {
+  background-color: #bdd2ff;
+  border: 1px solid black;
+  border-radius: 10px;
+  cursor: pointer;
+  padding: 0 0.5rem;
+}
+
+#add-tag:active {
+  background-color: #b0c9ff;
+}
+
 .back-btn {
   bottom: 20px;
   color: #c929c9;

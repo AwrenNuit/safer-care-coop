@@ -128,7 +128,8 @@ export default function SelectedPractitioner() {
                 >
                   {(i ? ", " : "") + tag}
                 </span>
-              ))}
+              ))}{" "}
+              <span id="add-tag" onClick={addTag}>+ Add Tag</span>
             </p>
           ) : (
             <p>Tags: No tags yet</p>
