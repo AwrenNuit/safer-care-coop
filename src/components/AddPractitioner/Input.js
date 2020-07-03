@@ -41,7 +41,7 @@ export default function Input(props) {
   const showToast = () => {
     toast("🛑 Use format xxx-xxx-xxxx", {
       position: "bottom-center",
-      autoClose: 3000,
+      autoClose: 5000,
       hideProgressBar: true,
       closeOnClick: true,
       pauseOnHover: true,

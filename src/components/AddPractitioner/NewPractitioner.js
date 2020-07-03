@@ -1,6 +1,8 @@
 import React, { useState, useContext } from "react";
 import { db } from "../../firebase";
 import { Context } from "../App/App";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import StarRating from "react-star-ratings";
 import "./NewPractitioner.css";
 import Input from "./Input";
@@ -42,13 +44,40 @@ export default function NewPractitioner() {
             thankAndRedirect();
           }
         } else {
-          alert(`Please select 'Physician' or 'Therapist' tag.`);
+          toast("🛑 Please select 'Physician' or 'Therapist' tag.", {
+            position: "bottom-center",
+            autoClose: 5000,
+            hideProgressBar: true,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+          });
         }
       } else {
-        alert(`Please enter practitioner Name, Employer, and Phone Number.`);
+        toast(
+          "🛑 Please enter practitioner Name, Employer, and Phone Number.",
+          {
+            position: "bottom-center",
+            autoClose: 5000,
+            hideProgressBar: true,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+          }
+        );
       }
     } else {
-      alert(`That practitioner is already in the system.`);
+      toast("🛑 That practitioner is already in the system", {
+        position: "bottom-center",
+        autoClose: 5000,
+        hideProgressBar: true,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
     }
   };
 
@@ -287,6 +316,17 @@ export default function NewPractitioner() {
           </div>
         </div>
       </form>
+      <ToastContainer
+        position="bottom-center"
+        autoClose={5000}
+        hideProgressBar
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
     </div>
   );
 }
