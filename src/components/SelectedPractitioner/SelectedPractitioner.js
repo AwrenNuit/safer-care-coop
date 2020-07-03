@@ -84,9 +84,16 @@ export default function SelectedPractitioner() {
           <h1>{practitioner.name}</h1>
         </div>
         <div className="grid-employer">
-          <p>
-            {practitioner.employer} | {practitioner.phone}
+          <p className="fs-phone">
+            {practitioner.employer} |{" "}
+            <a href={`tel:1-${practitioner.phone}`}>{practitioner.phone}</a>
           </p>
+          <div className="ms-phone">
+            <p>{practitioner.employer}</p>
+            <p>
+              <a href={`tel:1-${practitioner.phone}`}>{practitioner.phone}</a>
+            </p>
+          </div>
         </div>
         <div className="grid-rating">
           <StarRating

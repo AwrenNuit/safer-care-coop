@@ -99,11 +99,14 @@ export default function Results() {
             </div>
             <div className="grid-employer">
               <p className="fs-phone">
-                {item.employer} | {item.phone}
+                {item.employer} |{" "}
+                <a href={`tel:1-${item.phone}`}>{item.phone}</a>
               </p>
               <div className="ms-phone">
                 <p>{item.employer}</p>
-                <p>{item.phone}</p>
+                <p>
+                  <a href={`tel:1-${item.phone}`}>{item.phone}</a>
+                </p>
               </div>
             </div>
             <div className="grid-rating">
