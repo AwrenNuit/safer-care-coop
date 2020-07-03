@@ -57,6 +57,28 @@ export default function Home() {
         </Link>
         .
       </p>
+      <br />
+      <br />
+      <p id="get-involved">
+        If you want to get involved with this, feel free to{" "}
+        <a
+          href="https://github.com/AwrenNuit/safer-community-healthcare"
+          rel="noopener noreferrer"
+          style={{ color: "#c929c9" }}
+          target="_blank"
+        >
+          FORK THE REPO
+        </a>{" "}
+        and make a Pull Request. I would love to improve the website's features,
+        aesthetics, and the user experience. Please{" "}
+        <a
+          href="mailto:awren.nuit@gmail.com?subject=RE: Safer Healthcare"
+          style={{ color: "#c929c9" }}
+        >
+          EMAIL ME
+        </a>{" "}
+        with any suggestions or questions.
+      </p>
       <ToastContainer
         position="bottom-center"
         autoClose={5000}
