@@ -6,7 +6,8 @@ import Input from "../AddPractitioner/Input";
 export default function AddTag(props) {
   const [tags, setTags] = useState([]);
 
-  const addTag = () => {
+  const addTag = (e) => {
+    e.preventDefault();
     for (let tag of tags) {
       const randomID = Math.random().toString(36).substr(2, 13);
       db.ref(`${props.name}/tags`).update({
@@ -17,14 +18,16 @@ export default function AddTag(props) {
 
   const handleTagChange = (e, tag) => {
     if (e) {
+      setTags((tags) => [...tags, tag]);
+    } else {
       setTags(tags.filter((item) => item !== tag));
     }
   };
 
   return (
-    <div>
-      <div>
-        <h2>Add-a-Tag</h2>
+    <div id="modal-container">
+      <form onSubmit={addTag}>
+        <h2 style={{ textAlign: "center" }}>Add-a-Tag</h2>
         <div>
           <Input handleChange={handleTagChange} label="BIPOC" type="checkbox" />
           <Input
@@ -41,7 +44,8 @@ export default function AddTag(props) {
           />
           <Input handleChange={handleTagChange} label="Women" type="checkbox" />
         </div>
-      </div>
+        <button type="submit">Add Tags</button>
+      </form>
     </div>
   );
 }

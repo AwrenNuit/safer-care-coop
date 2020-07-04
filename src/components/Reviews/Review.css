@@ -1,0 +1,8 @@
+.review-box {
+  background-color: #fffcf1;
+  border: 2px solid #4f71bb;
+  border-radius: 10px;
+  box-shadow: 0 0 5px -1px #c929c9;
+  margin: 1.5rem 0;
+  padding: 1rem;
+}

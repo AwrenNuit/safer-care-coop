@@ -56,14 +56,7 @@ export default function NewReview(props) {
 
   return (
     <form onSubmit={handleSubmit}>
-      <div
-        style={{
-          border: "3px solid black",
-          margin: "2rem auto 0 auto",
-          maxWidth: "630px",
-          padding: "1rem",
-        }}
-      >
+      <div id="new-review-box">
         <h2 style={{ marginBottom: "20px", textAlign: "center" }}>
           Leave a Review
         </h2>

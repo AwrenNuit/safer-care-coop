@@ -5,12 +5,14 @@ import { Context } from "../App/App";
 import StarRating from "react-star-ratings";
 import Reviews from "../Reviews/Reviews";
 import NewReview from "../NewReview/NewReview";
+import AddTag from "../AddTag/AddTag";
 
 export default function SelectedPractitioner() {
   const { state, dispatch } = useContext(Context);
   const history = useHistory();
   const practitioner = state.selectedPractitioner;
   const [calculatedRating, setCalculatedRating] = useState(0);
+  const [modal, setModal] = useState(false);
   const [zeroRatings, setZeroRatings] = useState(false);
 
   useEffect(() => {
@@ -67,6 +69,7 @@ export default function SelectedPractitioner() {
 
   return (
     <div className="main-container">
+      {modal ? <AddTag /> : null}
       <p className="back-btn" onClick={() => history.goBack()}>
         &#8656; Return to Search Results
       </p>
@@ -100,7 +103,7 @@ export default function SelectedPractitioner() {
             name="rating"
             numberOfStars={5}
             rating={calculatedRating}
-            starDimension="20px"
+            starDimension="30px"
             starRatedColor="gold"
             starSpacing="0"
           />
@@ -129,7 +132,9 @@ export default function SelectedPractitioner() {
                   {(i ? ", " : "") + tag}
                 </span>
               ))}{" "}
-              <span id="add-tag" onClick={addTag}>+ Add Tag</span>
+              <span id="add-tag" onClick={() => setModal(true)}>
+                + Add Tag
+              </span>
             </p>
           ) : (
             <p>Tags: No tags yet</p>

@@ -78,8 +78,7 @@ export default function Results() {
         {searchResults.map((item, i) => (
           <div
             key={i}
-            className="grid"
-            style={{ border: "2px solid black", padding: "1rem" }}
+            className="grid results-box"
           >
             <div
               className="grid-img"
