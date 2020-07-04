@@ -68,7 +68,7 @@ export default function Results() {
       type: `SET_DOCTOR`,
       payload: doctor,
     });
-    history.push(`/practitioner/${doctor.name}`);
+    history.push(`/practitioner/${doctor.name.replace(/\s+/g, '-').toLowerCase()}`);
   };
 
   return (
