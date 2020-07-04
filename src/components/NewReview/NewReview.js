@@ -20,7 +20,7 @@ export default function NewReview(props) {
     e.preventDefault();
     postReview();
     incrementNumberOfRatings();
-    postRating(Math.random().toString(36).substr(2, 13));
+    postRating();
     thankAndRedirect();
   };
 
@@ -32,9 +32,10 @@ export default function NewReview(props) {
     );
   };
 
-  const postRating = (randomID) => {
+  const postRating = () => {
+    const randomID = Math.random().toString(36).substr(2, 13);
     db.ref(`${props.thisPractitioner}/ratings`).update({
-      [new Date() + randomID]: starRating,
+      [Object.values(props.ratings).length + randomID]: starRating,
     });
   };
 

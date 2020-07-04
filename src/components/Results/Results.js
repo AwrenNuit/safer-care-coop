@@ -3,11 +3,18 @@ import { useHistory, Link } from "react-router-dom";
 import StarRating from "react-star-ratings";
 import "./Results.css";
 import { Context } from "../App/App";
+import { db } from "../../firebase";
 
 export default function Results() {
   const history = useHistory();
   const { state, dispatch } = useContext(Context);
   const [searchResults, setSearchResults] = useState([]);
+
+  useEffect(() => {
+    db.ref().once("value", (snapshot) => {
+      dispatch({ type: `SET_PRACTITIONERS`, payload: snapshot.val() });
+    });
+  }, []);
 
   useEffect(() => {
     setSearchResults(state.searchResults);
@@ -76,10 +83,7 @@ export default function Results() {
       </p>
       <div>
         {searchResults.map((item, i) => (
-          <div
-            key={i}
-            className="grid results-box"
-          >
+          <div key={i} className="grid results-box">
             <div
               className="grid-img"
               onClick={() => selectDoctor(item)}
@@ -138,7 +142,7 @@ export default function Results() {
               <p className="tags">
                 Tags:{" "}
                 {item.tags ? (
-                  item.tags.map((tag, j) => (
+                  Object.values(item.tags).map((tag, j) => (
                     <span
                       className="this-tag"
                       key={j}

@@ -1,6 +1,6 @@
 import React, { Fragment } from "react";
 import StarRating from "react-star-ratings";
-import './Review.css';
+import "./Review.css";
 
 export default function Reviews(props) {
   return (

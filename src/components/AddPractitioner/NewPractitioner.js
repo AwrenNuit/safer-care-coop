@@ -40,44 +40,17 @@ export default function NewPractitioner() {
             postWithReview();
             thankAndRedirect();
           } else {
-            PostWithNoReviewOrRating();
+            postWithNoReviewOrRating();
             thankAndRedirect();
           }
         } else {
-          toast("🛑 Please select 'Physician' or 'Therapist' tag.", {
-            position: "bottom-center",
-            autoClose: 5000,
-            hideProgressBar: true,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-          });
+          toastPhysicianOrTherapist();
         }
       } else {
-        toast(
-          "🛑 Please enter practitioner Name, Employer, and Phone Number.",
-          {
-            position: "bottom-center",
-            autoClose: 5000,
-            hideProgressBar: true,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-          }
-        );
+        toastNeedNameEmployerAndPhone();
       }
     } else {
-      toast("🛑 That practitioner is already in the system", {
-        position: "bottom-center",
-        autoClose: 5000,
-        hideProgressBar: true,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-      });
+      toastPractitionerAlreadyInDatabase();
     }
   };
 
@@ -98,8 +71,9 @@ export default function NewPractitioner() {
   };
 
   const postRating = () => {
+    const randomID = Math.random().toString(36).substr(2, 13);
     db.ref(`${name}/ratings`).update({
-      [new Date()]: starRating,
+      [randomID]: starRating,
     });
   };
 
@@ -114,7 +88,7 @@ export default function NewPractitioner() {
       });
   };
 
-  const PostWithNoReviewOrRating = () => {
+  const postWithNoReviewOrRating = () => {
     db.ref(name).set({
       bio,
       employer,
@@ -177,6 +151,42 @@ export default function NewPractitioner() {
   const thankAndRedirect = () => {
     dispatch({ type: `SHOW_TOAST` });
     history.push("/");
+  };
+
+  const toastNeedNameEmployerAndPhone = () => {
+    toast("🛑 Please enter practitioner Name, Employer, and Phone Number.", {
+      position: "bottom-center",
+      autoClose: 5000,
+      hideProgressBar: true,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    });
+  };
+
+  const toastPhysicianOrTherapist = () => {
+    toast("🛑 Please select 'Physician' or 'Therapist' tag.", {
+      position: "bottom-center",
+      autoClose: 5000,
+      hideProgressBar: true,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    });
+  };
+
+  const toastPractitionerAlreadyInDatabase = () => {
+    toast("🛑 That practitioner is already in the system", {
+      position: "bottom-center",
+      autoClose: 5000,
+      hideProgressBar: true,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    });
   };
 
   return (
@@ -262,11 +272,7 @@ export default function NewPractitioner() {
               label="Disabled"
               type="checkbox"
             />
-            <Input
-              handleChange={handleTagChange}
-              label="Fat"
-              type="checkbox"
-            />
+            <Input handleChange={handleTagChange} label="Fat" type="checkbox" />
             <Input
               handleChange={handleTagChange}
               label="Queer"

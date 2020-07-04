@@ -31,11 +31,11 @@ export default function SelectedPractitioner() {
 
   const closeModal = () => {
     setModal(false);
-  }
+  };
 
   const openModal = () => {
-    setModal(true)
-  }
+    setModal(true);
+  };
 
   const searchTag = (selectedTag) => {
     const all = state.allPractitioners;
@@ -77,7 +77,13 @@ export default function SelectedPractitioner() {
 
   return (
     <div className="main-container">
-      {modal ? <AddTag closeModal={closeModal} /> : null}
+      {modal ? (
+        <AddTag
+          closeModal={closeModal}
+          name={practitioner.name}
+          tags={practitioner.tags}
+        />
+      ) : null}
       <p className="back-btn" onClick={() => history.goBack()}>
         &#8656; Return to Search Results
       </p>
@@ -131,7 +137,7 @@ export default function SelectedPractitioner() {
           {practitioner.tags ? (
             <p className="tags">
               Tags:{" "}
-              {practitioner.tags.map((tag, i) => (
+              {Object.values(practitioner.tags).map((tag, i) => (
                 <span
                   className="this-tag"
                   key={i}
@@ -140,9 +146,11 @@ export default function SelectedPractitioner() {
                   {(i ? ", " : "") + tag}
                 </span>
               ))}{" "}
-              <span id="add-tag" onClick={openModal}>
-                +&nbsp;Add&nbsp;Tag
-              </span>
+              {Object.values(practitioner.tags).length < 7 ? (
+                <span id="add-tag" onClick={openModal}>
+                  +&nbsp;Add&nbsp;Tag
+                </span>
+              ) : null}
             </p>
           ) : (
             <p>Tags: No tags yet</p>
