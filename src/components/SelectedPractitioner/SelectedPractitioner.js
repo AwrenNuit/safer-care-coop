@@ -133,7 +133,7 @@ export default function SelectedPractitioner() {
                 </span>
               ))}{" "}
               <span id="add-tag" onClick={() => setModal(true)}>
-                + Add Tag
+                +&nbsp;Add&nbsp;Tag
               </span>
             </p>
           ) : (
