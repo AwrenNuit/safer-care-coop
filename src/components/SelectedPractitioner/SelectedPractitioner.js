@@ -41,8 +41,8 @@ export default function SelectedPractitioner() {
     const all = state.allPractitioners;
     const matches = [];
     for (let i = 0; i < Object.keys(all).length; i++) {
-      if (Object.values(all)[i].tags) {
-        for (let tag of Object.values(all)[i].tags) {
+      if (Object.values(Object.entries(all)[i][1].tags)) {
+        for (let tag of Object.values(Object.entries(all)[i][1].tags)) {
           if (
             tag.toLowerCase() === selectedTag.toLowerCase() &&
             !matches.includes(Object.values(all)[i].bio)

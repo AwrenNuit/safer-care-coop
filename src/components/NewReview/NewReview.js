@@ -34,9 +34,15 @@ export default function NewReview(props) {
 
   const postRating = () => {
     const randomID = Math.random().toString(36).substr(2, 13);
-    db.ref(`${props.thisPractitioner}/ratings`).update({
-      [Object.values(props.ratings).length + randomID]: starRating,
-    });
+    if (!props.ratings) {
+      db.ref(`${props.thisPractitioner}/ratings`).update({
+        [0 + randomID]: starRating,
+      });
+    } else {
+      db.ref(`${props.thisPractitioner}/ratings`).update({
+        [Object.values(props.ratings).length + randomID]: starRating,
+      });
+    }
   };
 
   const postReview = () => {
