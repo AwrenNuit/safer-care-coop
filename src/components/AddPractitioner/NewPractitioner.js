@@ -18,7 +18,7 @@ export default function NewPractitioner() {
   const [phoneNumber, setPhoneNumber] = useState("");
   const [review, setReview] = useState("");
   const [reviewName, setReviewName] = useState("");
-  const [starRating, setStarRating] = useState(3);
+  const [starRating, setStarRating] = useState(0);
   const [tags, setTags] = useState([]);
   const day = new Date().getDate();
   const month = new Date().toLocaleString("default", { month: "long" });
@@ -30,10 +30,10 @@ export default function NewPractitioner() {
     if (!Object.keys(state.allPractitioners).includes(name)) {
       if (name && employer && phoneNumber) {
         if (tags.includes("Physician") || tags.includes("Therapist")) {
-          if (starRating && review) {
+          if (starRating !== 0 && review) {
             postWithRatingAndReview();
             thankAndRedirect();
-          } else if (starRating) {
+          } else if (starRating !== 0) {
             postWithRating();
             thankAndRedirect();
           } else if (review) {
