@@ -14,6 +14,7 @@ export default function AddTag(props) {
         [new Date() + randomID]: tag,
       });
     }
+    props.closeModal();
   };
 
   const handleTagChange = (e, tag) => {
@@ -25,27 +26,44 @@ export default function AddTag(props) {
   };
 
   return (
-    <div id="modal-container">
-      <form onSubmit={addTag}>
-        <h2 style={{ textAlign: "center" }}>Add-a-Tag</h2>
-        <div>
-          <Input handleChange={handleTagChange} label="BIPOC" type="checkbox" />
-          <Input
-            handleChange={handleTagChange}
-            label="Disabled"
-            type="checkbox"
-          />
-          <Input handleChange={handleTagChange} label="Fat" type="checkbox" />
-          <Input handleChange={handleTagChange} label="Queer" type="checkbox" />
-          <Input
-            handleChange={handleTagChange}
-            label="Transgender"
-            type="checkbox"
-          />
-          <Input handleChange={handleTagChange} label="Women" type="checkbox" />
-        </div>
-        <button type="submit">Add Tags</button>
-      </form>
+    <div id="modal-greyout" onClick={props.closeModal}>
+      <div id="modal-container">
+        <span id="modal-x" onClick={props.closeModal}>x</span>
+        <form onSubmit={addTag}>
+          <h2 style={{ textAlign: "center" }}>Add-a-Tag</h2>
+          <div style={{ marginTop: "1rem" }}>
+            <Input
+              handleChange={handleTagChange}
+              label="BIPOC"
+              type="checkbox"
+            />
+            <Input
+              handleChange={handleTagChange}
+              label="Disabled"
+              type="checkbox"
+            />
+            <Input handleChange={handleTagChange} label="Fat" type="checkbox" />
+            <Input
+              handleChange={handleTagChange}
+              label="Queer"
+              type="checkbox"
+            />
+            <Input
+              handleChange={handleTagChange}
+              label="Transgender"
+              type="checkbox"
+            />
+            <Input
+              handleChange={handleTagChange}
+              label="Women"
+              type="checkbox"
+            />
+          </div>
+          <button type="submit" style={{ display: "block", margin: "0 auto", width: "100%" }}>
+            Add Tags
+          </button>
+        </form>
+      </div>
     </div>
   );
 }

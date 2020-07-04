@@ -1,11 +1,37 @@
+#modal-greyout {
+  background-color: #4242429a;
+  bottom: 0;
+  height: 100%;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 100%;
+  z-index: 1;
+}
+
 #modal-container {
-  /* make body position: relative; */
-  background-color: #fff;
-  height: 700px;
+  background-color: #fffcf1;
+  border-radius: 10px;
+  border: 1px solid red;
+  display: grid;
+  grid-template-columns: 1fr;
+  justify-items: center;
   left: 50%;
   padding: 2rem;
-  position: absolute;
+  position: fixed;
   top: 50%;
   transform: translate(-50%, -50%);
-  width: 400px;
+  width: 250px;
+  z-index: 1;
+}
+
+#modal-x {
+  cursor: pointer;
+  font-size: 1.2rem;
+  position: absolute;
+  right: 20px;
+  text-align: center;
+  top: 10px;
+  width: 20px;
 }

@@ -29,6 +29,14 @@ export default function SelectedPractitioner() {
     }
   }, []);
 
+  const closeModal = () => {
+    setModal(false);
+  }
+
+  const openModal = () => {
+    setModal(true)
+  }
+
   const searchTag = (selectedTag) => {
     const all = state.allPractitioners;
     const matches = [];
@@ -69,7 +77,7 @@ export default function SelectedPractitioner() {
 
   return (
     <div className="main-container">
-      {modal ? <AddTag /> : null}
+      {modal ? <AddTag closeModal={closeModal} /> : null}
       <p className="back-btn" onClick={() => history.goBack()}>
         &#8656; Return to Search Results
       </p>
@@ -132,7 +140,7 @@ export default function SelectedPractitioner() {
                   {(i ? ", " : "") + tag}
                 </span>
               ))}{" "}
-              <span id="add-tag" onClick={() => setModal(true)}>
+              <span id="add-tag" onClick={openModal}>
                 +&nbsp;Add&nbsp;Tag
               </span>
             </p>
