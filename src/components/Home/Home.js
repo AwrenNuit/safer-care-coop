@@ -44,7 +44,7 @@ export default function Home() {
       </p>
       <br />
       <p>
-        The goal of [Safer Healthcare] is to make it easier for people who hold
+        The goal of the Safer Care Co-op is to make it easier for people who hold
         these identities to find a healthcare practitioner in the Minneapolis
         area who will provide better care.
       </p>
@@ -72,7 +72,7 @@ export default function Home() {
         and make a Pull Request. I would love to improve the website's features,
         aesthetics, and the user experience. Please{" "}
         <a
-          href="mailto:awren.nuit@gmail.com?subject=RE: Safer Healthcare"
+          href="mailto:awren.nuit@gmail.com?subject=RE: Safer Care Co-op"
           style={{ color: "#c929c9" }}
         >
           EMAIL ME

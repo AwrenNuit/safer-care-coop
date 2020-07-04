@@ -9,7 +9,7 @@ export default function Header() {
   return (
     <div id="header-container">
       <div id="header" onClick={() => history.push("/")}>
-        <h2>[Safer Healthcare]</h2>
+        <h2>Safer Care Co-op</h2>
       </div>
       <Searchbar />
     </div>
